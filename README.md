@@ -1,8 +1,3 @@
-<!-- ============================================================ -->
-<!--  Alim Dauletbek · GitHub profile README                      -->
-<!--  Repo: dauletbekalim/dauletbekalim (renders on your profile) -->
-<!-- ============================================================ -->
-
 <div align="center">
 
 <!-- HEADER BANNER -->
