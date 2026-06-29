@@ -5,14 +5,14 @@
 
 <div align="center">
 
-<!-- ░░ HEADER BANNER ░░ -->
+<!-- HEADER BANNER -->
 <img
   src="https://capsule-render.vercel.app/api?type=waving&color=0:0f1117,100:e8845b&height=210&section=header&text=Alim%20Dauletbek&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Founder%20@%20Shhaizada%20Studio%20%C2%B7%20Full-stack%20Engineer%20%26%20Designer&descAlignY=58&descSize=17&descColor=ecd9cb"
   alt="Alim Dauletbek"
   width="100%"
 />
 
-<!-- ░░ ANIMATED TYPING TAGLINE ░░ -->
+<!-- ANIMATED TYPING TAGLINE -->
 <a href="https://alim.wtf">
   <img
     src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=E8845B&center=true&vCenter=true&width=620&height=44&lines=I+build+web+experiences+that+move;Next.js+%C2%B7+Three.js+%C2%B7+GSAP+%C2%B7+TypeScript;Design-obsessed%2C+ship-focused;AI+%2B+robotics+on+the+side"
@@ -22,7 +22,7 @@
 
 <br/>
 
-<!-- ░░ LOCATION + PROFILE VIEWS ░░ -->
+<!-- LOCATION + PROFILE VIEWS -->
 <img src="https://img.shields.io/badge/Based%20in-Astana,%20Kazakhstan-0f1117?style=flat-square&labelColor=0f1117&color=e8845b" alt="Astana, Kazakhstan" />
 <img src="https://komarev.com/ghpvc/?username=dauletbekalim&style=flat-square&color=e8845b&label=PROFILE+VIEWS" alt="Profile views" />
 
@@ -30,7 +30,7 @@
 
 <br/>
 
-## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28"> &nbsp;About me
+## About me
 
 ```ts
 const alim = {
@@ -43,14 +43,14 @@ const alim = {
 };
 ```
 
-- 🎨 &nbsp;I run **[Shhaizada](https://shhaizada.dev)**, a web studio crafting landing pages, CRMs & bespoke web experiences.
-- 🌐 &nbsp;Portfolio & playground: **[alim.wtf](https://alim.wtf)**
-- 🤖 &nbsp;Past lives: nFactorial incubator, FTC robotics, military-grade computer vision.
-- 💬 &nbsp;Ask me about animation-heavy frontends, 3D on the web, or shipping a polished MVP fast.
+- I run **[Shhaizada](https://shhaizada.dev)**, a web studio crafting landing pages, CRMs and bespoke web experiences.
+- Portfolio and playground: **[alim.wtf](https://alim.wtf)**
+- Past lives: nFactorial incubator, FTC robotics, military-grade computer vision.
+- Ask me about animation-heavy frontends, 3D on the web, or shipping a polished MVP fast.
 
 <br/>
 
-## 🛠️ &nbsp;Tech stack
+## Tech stack
 
 <div align="center">
 
@@ -86,7 +86,7 @@ const alim = {
 
 <br/>
 
-## 📊 &nbsp;GitHub stats
+## GitHub stats
 
 <div align="center">
 
@@ -105,7 +105,7 @@ const alim = {
 
 <br/>
 
-## 🐍 &nbsp;Contribution graph
+## Contribution graph
 
 <div align="center">
 
@@ -119,7 +119,7 @@ const alim = {
 
 <br/>
 
-## 🤝 &nbsp;Let's connect
+## Let's connect
 
 <div align="center">
 
