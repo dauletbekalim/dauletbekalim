@@ -7,6 +7,7 @@
   width="100%"
 />
 
+
 <!-- ANIMATED TYPING TAGLINE -->
 <a href="https://alim.wtf">
   <img
