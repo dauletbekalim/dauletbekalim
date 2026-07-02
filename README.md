@@ -86,16 +86,7 @@ const alim = {
 
 <div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=dauletbekalim&show_icons=true&count_private=true&include_all_commits=true&hide_border=true&bg_color=00000000&title_color=e8845b&text_color=c9d1d9&icon_color=e8845b" alt="Alim's GitHub stats" />
 <img height="180em" src="https://streak-stats.demolab.com?user=dauletbekalim&hide_border=true&background=00000000&ring=e8845b&fire=e8845b&currStreakLabel=e8845b&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=8b949e&dayLabels=c9d1d9&stroke=c9d1d9" alt="GitHub streak" />
-
-<br/>
-
-<img height="155em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=dauletbekalim&layout=compact&hide_border=true&bg_color=00000000&title_color=e8845b&text_color=c9d1d9&langs_count=8" alt="Top languages" />
-
-<br/><br/>
-
-<img src="https://github-profile-trophy.vercel.app/?username=dauletbekalim&theme=onedark&no-frame=true&no-bg=true&column=7&margin-w=8&margin-h=8" alt="GitHub trophies" width="100%" />
 
 </div>
 
