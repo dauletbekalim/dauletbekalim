@@ -1,11 +1,11 @@
 <div align="center">
 
-<!-- HEADER BANNER -->
-<img
-  src="https://capsule-render.vercel.app/api?type=waving&color=0:0f1117,100:e8845b&height=210&section=header&text=Alim%20Dauletbek&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Founder%20@%20Shhaizada%20Studio%20%C2%B7%20Full-stack%20Engineer%20%26%20Designer&descAlignY=58&descSize=17&descColor=ecd9cb"
-  alt="Alim Dauletbek"
-  width="100%"
-/>
+<!-- HEADER PHOTO -->
+<img src="assets/header.jpg" alt="Alim Dauletbek" width="100%" />
+
+<h3>Alim Dauletbek</h3>
+
+Founder @ Shhaizada Studio · Full-stack Engineer & Designer
 
 
 <!-- ANIMATED TYPING TAGLINE -->
