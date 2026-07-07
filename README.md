@@ -82,16 +82,6 @@ const alim = {
 
 <br/>
 
-## GitHub stats
-
-<div align="center">
-
-<img height="180em" src="https://streak-stats.demolab.com?user=dauletbekalim&hide_border=true&background=00000000&ring=e8845b&fire=e8845b&currStreakLabel=e8845b&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=8b949e&dayLabels=c9d1d9&stroke=c9d1d9" alt="GitHub streak" />
-
-</div>
-
-<br/>
-
 ## Contribution graph
 
 <div align="center">
