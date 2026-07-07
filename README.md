@@ -106,7 +106,7 @@ const alim = {
 <a href="https://www.linkedin.com/in/alim-dauletbek/">
   <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
 </a>
-<a href="https://x.com/alim.wtf">
+<a href="https://x.com/alimwtf">
   <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" />
 </a>
 <a href="https://instagram.com/alim.wtf">
