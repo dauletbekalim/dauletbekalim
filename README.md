@@ -5,7 +5,7 @@
 
 <h3>Alim Dauletbek</h3>
 
-Founder @ Shhaizada Studio · Full-stack Engineer & Designer
+Full-stack SWE @ Astana Hub · Founder @ Shhaizada Studio · Designer
 
 
 <!-- ANIMATED TYPING TAGLINE -->
@@ -30,6 +30,7 @@ Founder @ Shhaizada Studio · Full-stack Engineer & Designer
 
 ```ts
 const alim = {
+  dayJob:    "Full-stack SWE @ Astana Hub (full-time)",
   role:      "Founder & Lead Engineer @ Shhaizada Studio",
   building:  "fast, beautiful web products for startups & brands",
   stack:     ["Next.js", "React", "TypeScript", "Three.js", "GSAP"],
