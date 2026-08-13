@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- HEADER PHOTO -->
-<img src="assets/header.jpg" alt="Alim Dauletbek" width="100%" />
+<img src="assets/header.jpg?v=2" alt="Alim Dauletbek" width="100%" />
 
 <h3>Alim Dauletbek</h3>
 
