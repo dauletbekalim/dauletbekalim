@@ -42,8 +42,7 @@ const alim = {
 
 - I run **[Shhaizada](https://shhaizada.dev)**, a web studio crafting landing pages, CRMs and bespoke web experiences.
 - Portfolio and playground: **[alim.wtf](https://alim.wtf)**
-- Past lives: nFactorial incubator, FTC robotics, military-grade computer vision.
-- Ask me about animation-heavy frontends, 3D on the web, or shipping a polished MVP fast.
+- Ask me about ML optimization, 3D on the web, or shipping a polished MVP fast.
 
 <br/>
 
