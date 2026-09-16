@@ -11,7 +11,7 @@ Full-stack SWE @ Astana Hub · Founder @ Shhaizada Studio · Designer
 <!-- ANIMATED TYPING TAGLINE -->
 <a href="https://alim.wtf">
   <img
-    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=E8845B&center=true&vCenter=true&width=620&height=44&lines=bitcoin+in+2008+typa+guy;Next.js+%C2%B7+Three.js+%C2%B7+GSAP+%C2%B7+TypeScript;ML+theory%2C+ship-focused;AI+%2B+robotics+on+the+side"
+    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=E8845B&center=true&vCenter=true&width=620&height=44&lines=bitcoin+in+2008+typa+guy;Next.js+%C2%B7+Three.js+%C2%B7+GSAP+%C2%B7+TypeScript;ML+theory%2C+ship-focused;robotics+on+the+side"
     alt="What I do"
   />
 </a>
