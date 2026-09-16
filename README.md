@@ -30,8 +30,8 @@ Full-stack SWE @ Astana Hub · Founder @ Shhaizada Studio · Designer
 
 ```ts
 const alim = {
-  dayJob:    "full-stack SWE @ Astana Hub (full-time)",
-  role:      "founder & lead engineer @ Shhaizada Studio",
+  dayJob:    "full-stack lead SWE @ Astana Hub (full-time)",
+  role:      "on the side, founder & lead engineer @ IT studio,
   building:  "stealth startup in progress, multiplayer AI",
   stack:     ["Next.js", "React", "TypeScript", "Three.js", "GSAP"],
 };
