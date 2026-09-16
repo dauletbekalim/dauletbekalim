@@ -11,8 +11,8 @@ Full-stack SWE @ Astana Hub · Founder @ Shhaizada Studio · Designer
 <!-- ANIMATED TYPING TAGLINE -->
 <a href="https://alim.wtf">
   <img
-    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=E8845B&center=true&vCenter=true&width=620&height=44&lines=bitcoin+in+2008+typa+guy;Next.js+%C2%B7+Three.js+%C2%B7+GSAP+%C2%B7+TypeScript;ML+theory%2C+ship-focused;robotics+on+the+side"
-    alt="What I do"
+    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=E8845B&center=true&vCenter=true&width=620&height=44&lines=bitcoin+in+2008+typa+guy;next.js+%C2%B7+three.js+%C2%B7+GSAP+%C2%B7+typeScript;ML+theory%2C+ship-focused;robotics+on+the+side"
+    alt="what I do"
   />
 </a>
 
@@ -30,23 +30,19 @@ Full-stack SWE @ Astana Hub · Founder @ Shhaizada Studio · Designer
 
 ```ts
 const alim = {
-  dayJob:    "Full-stack SWE @ Astana Hub (full-time)",
-  role:      "Founder & Lead Engineer @ Shhaizada Studio",
-  building:  "fast, beautiful web products for startups & brands",
+  dayJob:    "full-stack SWE @ Astana Hub (full-time)",
+  role:      "founder & lead engineer @ Shhaizada Studio",
+  building:  "stealth startup in progress, multiplayer AI",
   stack:     ["Next.js", "React", "TypeScript", "Three.js", "GSAP"],
-  alsoInto:  ["computer vision (YOLOv8)", "FTC robotics", "AI tooling"],
-  obsession: "interfaces that feel designed, not templated",
-  motto:     "ship it, then make it move",
 };
 ```
 
-- I run **[Shhaizada](https://shhaizada.dev)**, a web studio crafting landing pages, CRMs and bespoke web experiences.
-- Portfolio and playground: **[alim.wtf](https://alim.wtf)**
-- Ask me about ML optimization, 3D on the web, or shipping a polished MVP fast.
+- I run **[Shhaizada](https://shhaizada.dev)**, an IT studio implementing AI in enterprise infrastructure, CRMs and bespoke web experiences.
+- portfolio and playground: **[alim.wtf](https://alim.wtf)**
 
 <br/>
 
-## Tech stack
+## tech stack
 
 <div align="center">
 
@@ -82,7 +78,7 @@ const alim = {
 
 <br/>
 
-## Contribution graph
+## contribution graph
 
 <div align="center">
 
@@ -96,7 +92,7 @@ const alim = {
 
 <br/>
 
-## Let's connect
+## let's connect
 
 <div align="center">
 
