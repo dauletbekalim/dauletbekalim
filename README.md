@@ -5,7 +5,7 @@
 
 <h3>Alim Dauletbek</h3>
 
-Full-stack SWE @ Astana Hub · Founder @ Shhaizada Studio · Designer
+Full-stack SWE @ Astana Hub · Founder @ agentmash.dev
 
 
 <!-- ANIMATED TYPING TAGLINE -->
