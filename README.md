@@ -11,10 +11,6 @@ Full-stack SWE @ Astana Hub · Founder @ agentmash.dev
 
 <br/>
 
-<!-- LOCATION + PROFILE VIEWS -->
-<img src="https://img.shields.io/badge/Based%20in-Astana,%20Kazakhstan-0f1117?style=flat-square&labelColor=0f1117&color=e8845b" alt="Astana, Kazakhstan" />
-<img src="https://komarev.com/ghpvc/?username=dauletbekalim&style=flat-square&color=e8845b&label=PROFILE+VIEWS" alt="Profile views" />
-
 </div>
 
 <br/>
