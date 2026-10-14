@@ -8,13 +8,6 @@
 Full-stack SWE @ Astana Hub · Founder @ agentmash.dev
 
 
-<!-- ANIMATED TYPING TAGLINE -->
-<a href="https://alim.wtf">
-  <img
-    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=E8845B&center=true&vCenter=true&width=620&height=44&lines=bitcoin+in+2008+typa+guy;next.js+%C2%B7+three.js+%C2%B7+GSAP+%C2%B7+typeScript;ML+theory%2C+ship-focused;robotics+on+the+side"
-    alt="what I do"
-  />
-</a>
 
 <br/>
 
