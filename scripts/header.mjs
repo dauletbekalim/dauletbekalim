@@ -8,7 +8,12 @@
 // the chat line arrives once he's there, the field twinkles slowly, the nametag bobs and
 // the splash pulses. with motion off it's the finished frame, same as the og card.
 //
-// run: node scripts/header.mjs  ->  assets/header.svg
+// two cuts of the same screen: the wide one for the readme column, and a taller one for
+// phones (the readme's <picture> swaps it in under 600px), where the wide one would shrink
+// its words to ~8px. the phone cut stacks it: the prompt and ~/alim.wtf on top, the splash
+// across the corner, then the nametag, him, and his chat line, every word 12px or more.
+//
+// run: node scripts/header.mjs  ->  assets/header.svg, assets/header-phone.svg
 // the portrait's glyphs come from scripts/data/portrait.json (python scripts/portrait.py)
 
 import { readFileSync } from "node:fs";
@@ -27,18 +32,49 @@ const CHAT_NAME = "alim";
 const STATEMENT = "co-founder & ceo @ agentmash.";
 const HOME = "~/alim.wtf";
 
-// a wide card so it fills the readme column. the text is big on purpose: github shrinks
-// the whole thing to ~340px on a phone, and 40 to 48 here still reads there
-const W = 1600;
-const H = 640;
-const EDGE = 48;
-
-const TAG = 48; // the nametag, pixel face (one unit is 6)
-const SPLASH_SIZE = 40;
-const PROMPT_SIZE = 40; // mono
-const WHO = 48; // <alim>, pixel
-const CHAT = 44; // the message, mono
-const HOME_SIZE = 40;
+// the wide cut fills the readme column. the text is big on purpose: github shrinks it
+// to ~340px on a phone that skips the <picture>, and 40 to 48 here still reads there.
+// the phone cut is 720 wide, ~0.45 on a 324px column: 28 here is ~12.6px there
+const LAYOUTS = {
+  wide: {
+    file: "header.svg",
+    W: 1600,
+    H: 640,
+    EDGE: 48,
+    TAG: 48, // the nametag, pixel face (one unit is 6)
+    SPLASH_SIZE: 40,
+    PROMPT_SIZE: 40, // mono
+    WHO: 48, // <alim>, pixel
+    CHAT: 44, // the message, mono
+    HOME_SIZE: 40,
+    BOX_H: 700, // the cutout's height on the card; he runs off the bottom like on the og
+    plateY: 36,
+    promptY: 40,
+    // the splash, tilted beside the plate's top right and rising, as on the title screen
+    splashAt: { x: 1244, y: 166, angle: -20 },
+    home: "chat", // ~/alim.wtf on the chat line, bottom right
+    field: 18,
+  },
+  phone: {
+    file: "header-phone.svg",
+    W: 720,
+    H: 800,
+    EDGE: 28,
+    TAG: 40,
+    SPLASH_SIZE: 28,
+    PROMPT_SIZE: 28,
+    WHO: 32,
+    CHAT: 28,
+    HOME_SIZE: 28,
+    BOX_H: 600,
+    // the splash crosses the top right corner under ~/alim.wtf, so the plate drops below it
+    plateY: 280,
+    promptY: 28,
+    splashAt: { x: 484, y: 172, angle: -20 },
+    home: "top", // ~/alim.wtf on the prompt's row, top right
+    field: 16,
+  },
+};
 
 // the neutral greys (INK) and the cover's own two: the plate and the chat strip
 const DIM = INK.dim;
@@ -60,30 +96,10 @@ function rng(seed) {
 // ---- the portrait ------------------------------------------------------------------------
 
 const P = JSON.parse(readFileSync(join(ROOT, "scripts", "data", "portrait.json"), "utf8"));
-const [SW, SH] = P.size;
-const BOX_H = 700; // the cutout's height on the card; he runs off the bottom like on the og
-const k = BOX_H / SH;
-const CELL = P.cell[0] * k; // one glyph's advance on the card
-const LINE = P.cell[1] * k; // one row
-const FS = CELL / 0.6; // the mono's advance is 0.6em
-const firstRow = P.rows.findIndex((r) => r.trim());
-// the crown: the top of the first row with ink, in source px
-const crownSrc = P.origin[1] + firstRow * P.cell[1] - P.cell[1] / 2;
 
-// the nametag sits up top on the centre line, his crown a little under the plate
-const plateY = 36;
-const plate = nametag({ x: W / 2, y: plateY, text: NAME, size: TAG, align: "center" });
-const crownY = plateY + plate.h + 18;
-const left = W / 2 - P.head * SW * k;
-const top = crownY - crownSrc * k;
-// a cell's top-left corner on the card
-const cellX = (c) => left + (P.origin[0] + c * P.cell[0]) * k - CELL / 2;
-const cellY = (r) => top + (P.origin[1] + r * P.cell[1]) * k - LINE / 2;
-
-// ---- the decode (alim.wtf lib/scramble.ts, as frames) ----------------------------------
-// each row prints as noise, resolves left to right over a few frames, then holds. blanks
-// never scramble, so his outline holds from the first frame
-
+// the decode (alim.wtf lib/scramble.ts, as frames): each row prints as noise, resolves
+// left to right over a few frames, then holds. blanks never scramble, so his outline
+// holds from the first frame
 const DECODE_GLYPHS = "01<>/\\{}[]#$%&*";
 function hash(i, frame, seed) {
   let h = (i * 374761393 + frame * 668265263 + seed * 2246822519) | 0;
@@ -113,9 +129,30 @@ const DECODE = {
   frames: 4, // noise frames per row before it holds
   frame: 0.075, // s each
 };
+const pt = (s) => `${+s.toFixed(3)}s`;
+
+function drawHeader(L) {
+const { W, H, EDGE, TAG, SPLASH_SIZE, PROMPT_SIZE, WHO, CHAT, HOME_SIZE, BOX_H } = L;
+const [SW, SH] = P.size;
+const k = BOX_H / SH;
+const CELL = P.cell[0] * k; // one glyph's advance on the card
+const LINE = P.cell[1] * k; // one row
+const FS = CELL / 0.6; // the mono's advance is 0.6em
+const firstRow = P.rows.findIndex((r) => r.trim());
+// the crown: the top of the first row with ink, in source px
+const crownSrc = P.origin[1] + firstRow * P.cell[1] - P.cell[1] / 2;
+
+// the nametag sits up top on the centre line, his crown a little under the plate
+const plateY = L.plateY;
+const plate = nametag({ x: W / 2, y: plateY, text: NAME, size: TAG, align: "center" });
+const crownY = plateY + plate.h + 18;
+const left = W / 2 - P.head * SW * k;
+const top = crownY - crownSrc * k;
+// a cell's top-left corner on the card
+const cellX = (c) => left + (P.origin[0] + c * P.cell[0]) * k - CELL / 2;
+const cellY = (r) => top + (P.origin[1] + r * P.cell[1]) * k - LINE / 2;
 
 const inkRows = P.rows.map((r, i) => ({ r, i })).filter(({ r }) => r.trim());
-const pt = (s) => `${+s.toFixed(3)}s`;
 let portrait = "";
 let decodeEnd = 0;
 inkRows.forEach(({ r, i }, n) => {
@@ -150,11 +187,11 @@ const onBody = (x, y) => {
 // ---- the gui -----------------------------------------------------------------------------
 
 // the splash, tilted beside the plate's top right and rising, as on the title screen
-const SPLASH_AT = { x: 1244, y: 166, angle: -20 };
+const SPLASH_AT = L.splashAt;
 const sp = splash({ ...SPLASH_AT, text: SPLASH, size: SPLASH_SIZE });
 
 // the prompt, top left: the prompt is there, whoami types itself in, one key at a time
-const promptY = 40;
+const promptY = L.promptY;
 const promptLine = monoText(PROMPT, { x: EDGE, y: promptY, size: PROMPT_SIZE, color: DIM });
 const ADV = 0.6 * PROMPT_SIZE;
 const TYPE = { start: 0.7, key: 0.11 };
@@ -187,14 +224,15 @@ const strip = { x: EDGE, y: chatY, w: Math.ceil(pad + whoW + monoWidth(STATEMENT
 const who = pxText(whoText, { x: EDGE + pad, y: chatY + Math.round((chatH - 1.25 * WHO) / 2), size: WHO, color: INK.paper });
 const msg = monoText(STATEMENT, { x: msgX, y: chatY + (chatH - 1.5 * CHAT) / 2, size: CHAT, color: INK.paper });
 
-// ~/alim.wtf, bottom right, on the chat line's middle
-const home = monoText(HOME, { x: W - EDGE, y: chatY + (chatH - 1.5 * HOME_SIZE) / 2, size: HOME_SIZE, color: DIMMER, align: "right" });
+// ~/alim.wtf: bottom right on the chat line's middle, or top right on the prompt's row
+const homeY = L.home === "top" ? promptY : chatY + (chatH - 1.5 * HOME_SIZE) / 2;
+const home = monoText(HOME, { x: W - EDGE, y: homeY, size: HOME_SIZE, color: DIMMER, align: "right" });
 
 // ---- the field ---------------------------------------------------------------------------
 // the cover's ambient field: a sparse scatter of dim glyphs on a coarse grid, white at four
 // low alphas, kept off him and the words. some of them twinkle, slowly, out of step
 
-const FIELD = { size: 18, chars: ".:'+*01/\\<>", levels: ["#242424", "#383838", "#525252", "#7a7a7a"] };
+const FIELD = { size: L.field, chars: ".:'+*01/\\<>", levels: ["#242424", "#383838", "#525252", "#7a7a7a"] };
 const pitchX = 26;
 const pitchY = 27;
 const AIR = 16;
@@ -202,7 +240,7 @@ const boxes = [
   { x: EDGE, y: promptY, w: monoWidth(PROMPT + COMMAND, PROMPT_SIZE) + 0.9 * PROMPT_SIZE, h: 1.5 * PROMPT_SIZE },
   { x: W / 2 - plate.w / 2, y: plateY - 6, w: plate.w, h: plate.h + 6 },
   strip,
-  { x: W - EDGE - home.w, y: chatY, w: home.w, h: chatH },
+  L.home === "top" ? { x: W - EDGE - home.w, y: homeY, w: home.w, h: 1.5 * HOME_SIZE } : { x: W - EDGE - home.w, y: chatY, w: home.w, h: chatH },
 ];
 const inBox = (x, y) => boxes.some((b) => x > b.x - AIR && x < b.x + b.w + AIR && y > b.y - AIR && y < b.y + b.h + AIR);
 // the splash's own tilted box (a little bigger, for the pulse)
@@ -311,4 +349,7 @@ const svg = svgDoc({
   corners: TAG / 8, // one of the nametag's pixels off each corner
   title: `${NAME}: ${STATEMENT.replace(/\.$/, "")}. ${SPLASH}`,
 });
-writeSvg(join(ASSETS, "header.svg"), svg);
+return svg;
+}
+
+for (const L of Object.values(LAYOUTS)) writeSvg(join(ASSETS, L.file), drawHeader(L));

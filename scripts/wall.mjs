@@ -173,8 +173,11 @@ function strip({ x, y, weeks, months, from }) {
 const CSS = `.h{opacity:0}`;
 
 // the build, and the live dot's slow blink (svgDoc only plays these for people who
-// haven't asked for less motion)
-const MOTION = `.a,.b{animation:on .01s steps(1) both}
+// haven't asked for less motion). each column fades in over a few columns' time: blink
+// stops ticking an svg image once no animation is mid-play, so with instant .01s steps
+// the build froze two seconds in. overlapping fades keep one always playing
+const FADE_S = 0.15;
+const MOTION = `.a,.b{animation:on ${FADE_S}s ease-out both}
 .h{animation:gh ${(TRAIL * STEP_S).toFixed(3)}s steps(1)}
 @keyframes on{from{opacity:0}}
 @keyframes gh{from,to{opacity:1}}

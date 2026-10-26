@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://alim.wtf"><img src="assets/header.svg" width="830" alt="alim dauletbek, drawn in ascii on a black title screen: co-founder &amp; ceo @ agentmash. delusional self-believer!"></a>
+  <a href="https://alim.wtf"><picture><source media="(max-width: 600px)" srcset="assets/header-phone.svg"><img src="assets/header.svg" width="830" alt="alim dauletbek, drawn in ascii on a black title screen: co-founder &amp; ceo @ agentmash. delusional self-believer!"></picture></a>
 </p>
 
 <p align="center"><a href="https://alim.wtf"><img src="assets/link-alim.svg" align="top" width="104" alt="alim.wtf"></a><a href="https://agentmash.dev"><img src="assets/link-agentmash.svg" align="top" width="104" alt="agentmash.dev"></a><a href="https://x.com/alimwtf"><img src="assets/link-x.svg" align="top" width="104" alt="x: @alimwtf"></a><a href="https://t.me/alimwtf"><img src="assets/link-telegram.svg" align="top" width="104" alt="telegram: @alimwtf"></a><a href="https://www.linkedin.com/in/alim-dauletbek/"><img src="assets/link-linkedin.svg" align="top" width="104" alt="linkedin: alim-dauletbek"></a><a href="https://instagram.com/alim.wtf"><img src="assets/link-instagram.svg" align="top" width="104" alt="instagram: alim.wtf"></a></p>
