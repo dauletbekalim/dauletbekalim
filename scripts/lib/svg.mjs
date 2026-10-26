@@ -19,8 +19,9 @@ const unesc = (s) =>
     .replace(/&(lt|gt|quot|apos|amp);/g, (_, n) => ({ lt: "<", gt: ">", quot: '"', apos: "'", amp: "&" })[n]);
 
 // the smallest font size (in viewBox px) that still reads at ~10px when github squeezes
-// an svg this wide into a 340px phone column
-export const minText = (w) => Math.ceil((10 * w) / 340);
+// an svg this wide into a phone's readme column: ~308px on the profile at 390 wide (the
+// repo page's is ~16px wider)
+export const minText = (w) => Math.ceil((10 * w) / 308);
 
 // a unique id for a gradient or a clip path inside one document
 let ids = 0;
@@ -66,14 +67,16 @@ export const cutCorners = (x, y, w, h, c) =>
 // css: static rules. motion: animation rules, wrapped in prefers-reduced-motion:
 // no-preference. bg: the panel colour (null for none). corners: cut the panel's corners
 // by this many px (a gui pixel looks right). title: the accessible name. faces: extra
-// [{ font, text, weight }] on top of what the <text> elements set
-export function svgDoc({ w, h, body, css = "", motion = "", bg = "#000", corners = 0, title = "", faces = [] }) {
+// [{ font, text, weight }] on top of what the <text> elements set. shown: the size the
+// svg says it is (its width), when that's not the viewBox's: the same drawing, declared
+// smaller, for a <picture> source a phone gets
+export function svgDoc({ w, h, body, css = "", motion = "", bg = "#000", corners = 0, title = "", faces = [], shown = w }) {
   const fonts = fontCss([...textFaces(body), ...faces]);
   const style = [fonts, BASE_CSS, css, motion && `@media (prefers-reduced-motion:no-preference){\n${motion}\n}`]
     .filter(Boolean)
     .join("\n");
   return [
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img"${title ? ` aria-label="${esc(title)}"` : ""}>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${shown}" height="${+((h * shown) / w).toFixed(2)}" viewBox="0 0 ${w} ${h}" role="img"${title ? ` aria-label="${esc(title)}"` : ""}>`,
     title && `<title>${esc(title)}</title>`,
     `<style>\n${style}\n</style>`,
     bg && `<path d="${cutCorners(0, 0, w, h, corners)}" fill="${bg}"/>`,

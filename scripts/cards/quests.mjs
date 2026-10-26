@@ -4,7 +4,7 @@
 // read), and the language as its attribute line in the game's blue. 410 wide at g 2, so
 // two sit side by side on a wide readme and a phone gets them one to a line at ~13px.
 
-import { measure, pxText, slot } from "../lib/frames.mjs";
+import { pxText, slot } from "../lib/frames.mjs";
 import { INK, MC, UI } from "../lib/palette.mjs";
 import { svgDoc } from "../lib/svg.mjs";
 import { QUESTS } from "./copy.mjs";
@@ -39,10 +39,7 @@ export function quests() {
       y += LH;
     }
     y = M + tipH - 4 * g - 20;
-    // the pixel j hooks two units back under the space before it: give it them back
-    const key = pxRuns([["language: ", INK.dimmer]], { x: tx, y, size: SIZE });
-    const hook = q.lang.startsWith("j") ? 2 * (SIZE / 8) : 0;
-    parts.push(key, pxRuns([[q.lang, UI.attr]], { x: tx + measure("language: ", SIZE) + hook, y, size: SIZE }));
+    parts.push(pxRuns([["language: ", INK.dimmer], [q.lang, UI.attr]], { x: tx, y, size: SIZE }));
     // square corners: the cards sit edge to edge, and cut ones would notch the seam
     const svg = svgDoc({ w: W, h: H, body: parts.join("\n"), title: `${q.name}: ${q.line} ${q.lang}.` });
     return { file: q.file, svg, w: W, h: H };

@@ -31,11 +31,14 @@ export const AGENTMASH = {
 
 // one toast each, title (the event) over text (what happened). two columns: school and
 // olympiads, then the work. the last is the one not made yet, from the story's last line
+// (stories.ts, agentmash: "next stop: san francisco.")
 export const ADVANCEMENTS = [
   { icon: "flag", title: "IOAI 2025", text: "kazakhstan national team" },
+  { icon: "silver", title: "national olympiad in informatics", text: "silver" },
   { icon: "story/robotics", title: "INFOMATRIX-ASIA 2025", text: "2nd place in hardware control" },
   { icon: "bronze", title: "WRO 2025, national stage", text: "3rd place" },
   { icon: "gold", title: "NIS science projects contest", text: "1st place in engineering" },
+  { icon: "bronze", title: "the first NIS AI olympiad", text: "3rd place" },
   { icon: "route", title: "registered scientific patent", text: "bezier localization for a rover" },
   { icon: "trophy", title: "harvard summer program", text: "best overall solution, with jobee" },
   { icon: "art/bee", title: "jobee", text: "$12K raised as cto" },
@@ -45,7 +48,7 @@ export const ADVANCEMENTS = [
 ];
 
 // the stack: content/site.ts SEO.knowsAbout and the terminal's boot line, plus java (the
-// rover) and postgres (the old readme)
+// rover) and wav2vec2 (narkesken, fine-tuned for kazakh speech)
 export const INVENTORY = {
   label: "inventory",
   name: "alim",
@@ -58,7 +61,7 @@ export const INVENTORY = {
     { item: "snake", name: "python", kind: "language" },
     { item: "art/potion", name: "ML", kind: "my own models" },
     { item: "mug", name: "java", kind: "the rover" },
-    { item: "db", name: "postgres", kind: "database" },
+    { item: "mic", name: "wav2vec2", kind: "kazakh speech" },
   ],
 };
 

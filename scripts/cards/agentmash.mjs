@@ -5,6 +5,10 @@
 // pricing. the lore is set in the mono like the site's (sentences read better in it).
 // motion: the ingredients drop in, the arrow fills, the output lands, the tooltip opens,
 // then the glint sweeps every few seconds. reduced motion: the finished recipe, still.
+//
+// two cuts: the wide one (820 at g 3, the tooltip beside the recipe, 24px words), and a
+// phone one (410 at g 2, the tooltip under the recipe, 16px words) that the readme's
+// <picture> swaps in under 600px, where the wide one would shrink its words to ~9px.
 
 import { button, panel, pxText, slot } from "../lib/frames.mjs";
 import { INK, MC } from "../lib/palette.mjs";
@@ -14,14 +18,10 @@ import { MARK_PNG } from "./art.mjs";
 import { AGENTMASH } from "./copy.mjs";
 import { delay, factLines, monoRuns, POP, tipFrame, wrapChars } from "./kit.mjs";
 
-const g = 3;
-const W = 830;
-const M = 4 * g; // the black round the panel
-const P = 6 * g; // the panel's padding
-const SLOT = 18 * g; // the game's crafting slot, a 16-unit item inside a 1-unit bevel
-const OUT = 26 * g; // the output slot
-const MONO = 24; // the lore, ~10px on a phone
-const LH = 31;
+const CUTS = {
+  wide: { file: "agentmash", W: 820, g: 3, m: 4, MONO: 24, LH: 31, SIZE: 24, stacked: false },
+  phone: { file: "agentmash-phone", W: 410, g: 2, m: 2, MONO: 16, LH: 21, SIZE: 16, stacked: true },
+};
 
 // the order the ingredients drop in: the ring's corners, its edges, the team last
 const DROP = [0, 2, 6, 8, 1, 7, 4];
@@ -29,30 +29,40 @@ const DROP = [0, 2, 6, 8, 1, 7, 4];
 // a sprite with every pixel white: the arrow once it's filled
 const white = (s) => ({ ...s, px: s.px.map((row) => row.map((c) => (c ? "#ffffff" : null))) });
 
-export function agentmash() {
-  // the tooltip first: it sets the card's height
+function draw({ file, W, g, m, MONO, LH, SIZE, stacked }) {
+  const M = m * g; // the black round the panel
+  const P = 6 * g; // the panel's padding
+  const SLOT = 18 * g; // the game's crafting slot, a 16-unit item inside a 1-unit bevel
+  const OUT = 26 * g; // the output slot
+  const lineH = SIZE * 1.25;
+
+  // the left side (or, stacked, the top, centred): the label, the recipe, the button
   const recipeW = 3 * SLOT + 5 * g + 16 * g + 5 * g + OUT;
-  const tipX = M + P + 3 * g + recipeW + 8 * g;
-  const tipW = W - M - P - tipX + 3 * g;
-  const n = Math.floor((tipW - 10 * g) / (0.6 * MONO));
+  const leftH = lineH + 4 * g + 3 * SLOT + 8 * g + 20 * g;
+  const L = stacked ? Math.round((W - recipeW) / 2) : M + P + 3 * g;
+
+  // the tooltip: beside the recipe, or under it across the panel when stacked (a phone
+  // line gets every character it can). its text sets the height
+  const tipX = stacked ? M + 2 * g : L + recipeW + 6 * g;
+  const tipW = stacked ? W - 2 * tipX : W - M - P - tipX + 3 * g;
+  const n = Math.floor((tipW - 8 * g) / (0.6 * MONO));
   const rows = [
     ...wrapChars(AGENTMASH.oneLiner, n).map((l) => [[l, INK.text]]),
     null,
     ...AGENTMASH.facts.flatMap((f, i) => [...(i ? [null] : []), ...factLines(f, n)]),
   ];
   const gap = 2 * g;
-  const tipH = 4 * g + 30 + 3 * g + rows.reduce((h, r) => h + (r ? LH : gap), 0) + 4 * g;
-  const H = M + P + tipH + P + M - 2 * g;
-  const tipY = M + P - g;
+  const tipH = 4 * g + lineH + 3 * g + rows.reduce((h, r) => h + (r ? LH : gap), 0) + 4 * g;
+  const top = stacked ? M + P : null;
+  const tipY = stacked ? M + P + leftH + 8 * g : M + P - g;
+  const H = stacked ? tipY + tipH + 2 * g + M : M + P + tipH + P + M - 2 * g;
 
   const parts = [panel({ x: M, y: M, w: W - 2 * M, h: H - 2 * M, g })];
 
-  // the left side: the label, the recipe, the button, centred down the panel
-  const leftH = 30 + 4 * g + 3 * SLOT + 8 * g + 20 * g;
-  const L = M + P + 3 * g;
-  const top = Math.round(M + (H - 2 * M - leftH) / 2);
-  parts.push(pxText(AGENTMASH.label, { x: L, y: top, size: 24, color: INK.dim, shadow: false }));
-  const gy = top + 30 + 4 * g;
+  // wide: the recipe centred down the panel. stacked: at the top
+  const y0 = top ?? Math.round(M + (H - 2 * M - leftH) / 2);
+  parts.push(pxText(AGENTMASH.label, { x: L, y: y0, size: SIZE, color: INK.dim, shadow: false }));
+  const gy = y0 + lineH + 4 * g;
 
   // the grid: slots first, then the items over them so each can pop on its own
   AGENTMASH.grid.forEach((name, i) => {
@@ -98,14 +108,14 @@ export function agentmash() {
   parts.push(drawSprite("art/cursor", { x: ox + OUT - 6 * g - 4 * 2, y: oy + OUT - 8 * g, scale: 2 }));
 
   // the way in, under the recipe
-  parts.push(button({ x: L, y: gy + 3 * SLOT + 8 * g, g, size: 24, label: "agentmash.dev ↗", variant: "light" }));
+  parts.push(button({ x: L, y: gy + 3 * SLOT + 8 * g, g, size: SIZE, label: "agentmash.dev ↗", variant: "light" }));
 
   // the tooltip, open
   const tip = [tipFrame({ x: tipX, y: tipY, w: tipW, h: tipH, g })];
   const tx = tipX + 5 * g;
   let y = tipY + 4 * g;
-  tip.push(pxText(AGENTMASH.name, { x: tx, y, size: 24, color: MC.aqua }));
-  y += 30 + 3 * g;
+  tip.push(pxText(AGENTMASH.name, { x: tx, y, size: SIZE, color: MC.aqua }));
+  y += lineH + 3 * g;
   for (const r of rows) {
     if (!r) {
       y += gap;
@@ -137,5 +147,7 @@ export function agentmash() {
     corners: g,
     title: "agentmash, crafted from your team and its AI coding agents",
   });
-  return { file: "agentmash", svg, w: W, h: H };
+  return { file, svg, w: W, h: H };
 }
+
+export const agentmash = () => Object.values(CUTS).map(draw);

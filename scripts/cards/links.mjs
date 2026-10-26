@@ -2,8 +2,11 @@
 // its own svg (github allows one link per image), the item drawn in the slot and its name
 // under it. the first wears the selected slot's white frame, the way the hotbar marks
 // what's in hand. the slots are g 3 (60px, a 48px item) and the names 16px. every tile is
-// the same width, so six make one bar on desktop and a phone wraps them into a neat 3 + 3
-// (3 x 104 fits github's ~310px phone column) instead of a ragged row.
+// the same width, so six make one bar on desktop (104 each, 1:1, crisp). a phone wraps
+// them into rows, and its readme column is narrower than it looks: ~308px at 390 wide,
+// 278 at 360. so each tile has a phone twin, the same drawing declared 92 wide, that
+// the readme's <picture> swaps in under 600px: 3 x 92 = 276, a neat 3 + 3 on every phone
+// down to 360 instead of three rows of two.
 
 import { pxText, slot } from "../lib/frames.mjs";
 import { INK } from "../lib/palette.mjs";
@@ -15,8 +18,9 @@ const g = 3;
 const SLOT = 20 * g;
 const SIZE = 16; // the name, in the pixel face
 const TILE = 104;
+const PHONE = 92;
 
-export function linkTile({ label, item: name }, selected) {
+export function linkTile({ label, item: name }, selected, shown = TILE) {
   const text = pxText(label, { size: SIZE });
   // one width for all: the widest name ("agentmash", 102px of ink) and a hair either side
   const w = TILE;
@@ -30,7 +34,11 @@ export function linkTile({ label, item: name }, selected) {
     pxText(label, { x: w / 2, y: ty, size: SIZE, color: selected ? INK.paper : INK.dim, align: "center" }),
   ].join("");
   // square corners: the tiles sit edge to edge as one bar, and cut ones would notch it
-  return { file: null, svg: svgDoc({ w, h, body, title: label }), w, h };
+  return { file: null, svg: svgDoc({ w, h, body, title: label, shown }), w, h };
 }
 
-export const links = () => LINKS.map((l, i) => ({ ...linkTile(l, i === 0), file: l.file }));
+export const links = () =>
+  LINKS.flatMap((l, i) => [
+    { ...linkTile(l, i === 0), file: l.file },
+    { ...linkTile(l, i === 0, PHONE), file: `${l.file}-phone` },
+  ]);

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="99.96" viewBox="0 0 104 113" role="img" aria-label="telegram">
+<title>telegram</title>
+<style>
+@font-face{font-family:pixel;src:url(data:font/woff2;base64,d09GMgABAAAAAAHYAAsAAAAABBgAAAGOAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAZBEICoJ8gjIBNgIkAyILFAAEIAVAByAb+QIIrgZsYyzaQdsy5Q5N4ziMshr0acPfs9J4+H6/9Nz3Fj8FdWaVSFiYTCwQl5SpU3Wuq4oILbyCAeqiA9SXJXuK4R1IAXmOQ5vY6+TkcDsAfUdtKwiqF7aq66XBIOjAOXWRNsUhVuqo679tdNCLHrSKEvB4gxO2uasNRlHT6Ex5b9la6bVLh6IHcO4ve6OBuzwMeegXAtJ1PsUAJGRMygKTWpYxalTGwLZ9h87duPsfQM6e0+++a5ua0ePjfwz6YBwlrvAK0AKEJJmu8UWr6RU96ozqWpkqGolKEaVQq+q+Sq2KIoPCaqqz02oV/CeiyN2yVSqiaJdSkIrD6HYqMmAqtForYjMKf787F/HyM4GWWBIMIWCpUjRqVESHyeVIp6/mtafrX7Bsi+4Dp6n7Gv3H7hK9vAKJ5n6BQPB1etH0JA/hrb0kjv9iPZQlEEQ/c3qHV+k6mqleesc6GY+nW19AoG9cknEgyeP4lCxafWESfklJY9K2M8fODVw59mTfmRX7Dt07s+1GBv4HCg==) format("woff2");font-weight:400;font-display:block}
+text{white-space:pre;font-kerning:none;font-variant-ligatures:none;font-synthesis:none}
+.px{font-family:pixel,mono,monospace;font-weight:400}
+.mono{font-family:mono,glyphs,monospace}
+.glyphs{font-family:glyphs,mono,monospace}
+</style>
+<path d="M0 0h104v113h-104z" fill="#000"/>
+<g shape-rendering="crispEdges"><path fill="#0e0e0e" d="M22 9h60v60h-60z"/><path fill="#3a3a3a" d="M22 66h60v3h-60zM79 9h3v60h-3z"/><path fill="#000" d="M22 9h60v3h-60zM22 9h3v60h-3z"/></g><g transform="translate(28 15) scale(4)" shape-rendering="crispEdges"><path fill="#ffffff" d="M10 1h1v1h-1zM7 2h2v1h-2zM4 3h4v1h-4zM1 4h6v1h-6zM2 5h4v1h-4zM3 6h2v1h-2z"/><path fill="#2aa8b0" d="M9 2h1v1h-1zM8 3h1v1h-1zM7 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1z"/><path fill="#bdeef2" d="M10 2h1v1h-1zM9 3h2v1h-2zM8 4h3v1h-3zM7 5h3v1h-3zM6 6h4v1h-4zM4 7h5v1h-5zM5 8h4v1h-4zM6 9h2v1h-2zM7 10h1v1h-1z"/></g><text class="px" x="12" y="102" font-size="16" fill="#292929">telegram</text><text class="px" x="10" y="100" font-size="16" fill="#a3a3a3">telegram</text>
+</svg>

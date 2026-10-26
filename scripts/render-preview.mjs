@@ -1,9 +1,9 @@
 // renders svgs to pngs the way github shows them: as an <img> at a given width, on
 // github's page colour, in headless edge. for looking at what we make before it ships.
 //
-//   node scripts/render-preview.mjs                  every assets/*.svg at 830 and 340
+//   node scripts/render-preview.mjs                  every assets/*.svg at 820 and 308
 //   node scripts/render-preview.mjs hero cards.svg   just these (names in assets/, or paths)
-//   flags: --width 830,340   display widths (the readme column, and a phone)
+//   flags: --width 820,308   display widths (the readme column, and a phone)
 //          --scale 2         device pixel ratio (2 = a retina screen)
 //          --light           github's light page instead of dark
 //          --reduced         the still frame: what someone with reduced motion sees
@@ -37,7 +37,7 @@ const flag = (name, dflt) => {
   args.splice(i, v === undefined || v.startsWith("--") ? 1 : 2);
   return v === undefined || v.startsWith("--") ? true : v;
 };
-const widths = String(flag("width", "830,340")).split(",").map(Number);
+const widths = String(flag("width", "820,308")).split(",").map(Number);
 const scale = Number(flag("scale", 1));
 const light = !!flag("light", false);
 const reduced = !!flag("reduced", false);

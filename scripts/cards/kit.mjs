@@ -1,6 +1,6 @@
 // bits more than one card uses, on top of the kit in scripts/lib
 
-import { measure, piece } from "../lib/frames.mjs";
+import { jNudge, measure, piece, pxLead, pxMarkup } from "../lib/frames.mjs";
 import { INK, UI, shadowOf } from "../lib/palette.mjs";
 import { cutCorners, esc, uid } from "../lib/svg.mjs";
 import { ART } from "./art.mjs";
@@ -52,15 +52,17 @@ export function monoRuns(runs, { x = 0, y = 0, size = 14, lh = 1.5, weight = 400
 }
 
 // one line of the pixel face in several colours, each run with its own hard drop, set as
-// one <text> so the font's own spaces sit between the runs (a "j" hooks left into a gap
-// measured by hand)
+// one <text> so the font's own spaces sit between the runs. a j gets the room pxText
+// gives it, a run that starts with one after a space too
 export function pxRuns(runs, { x = 0, y = 0, size = 16 } = {}) {
   const u = size / 8;
-  const t = (dx, dy, shade) =>
-    `<text class="px" x="${x + dx}" y="${y + size + dy}" font-size="${size}">` +
-    runs.map(([s, c]) => `<tspan fill="${shade ? shadowOf(c) : c}">${esc(s)}</tspan>`).join("") +
-    `</text>`;
   const text = runs.map(([s]) => s).join("");
+  const lead = pxLead(text, size);
+  const nudge = (i) => (i && runs[i][0].startsWith("j") && runs[i - 1][0].endsWith(" ") ? ` dx="${jNudge(size)}"` : "");
+  const t = (dx, dy, shade) =>
+    `<text class="px" x="${x + lead + dx}" y="${y + size + dy}" font-size="${size}">` +
+    runs.map(([s, c], i) => `<tspan fill="${shade ? shadowOf(c) : c}"${nudge(i)}>${pxMarkup(s, size)}</tspan>`).join("") +
+    `</text>`;
   return piece(t(u, u, true) + t(0, 0, false), measure(text, size), size * 1.25);
 }
 

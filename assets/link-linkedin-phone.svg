@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="99.96" viewBox="0 0 104 113" role="img" aria-label="linkedin">
+<title>linkedin</title>
+<style>
+@font-face{font-family:pixel;src:url(data:font/woff2;base64,d09GMgABAAAAAAG4AAsAAAAAA7gAAAFtAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAVBEICoIwgXsBNgIkAyALEgAEIAVAByAbsAIAnoWxG20Vs1GxOeNga0c/4uHf/cr7kiz9zGwBVTtKlMAD4CLm1Nh2napzXVXEAvjPrkHIMuhcd/oLH+SEISf3A/YdNLekBRI3j5KD3TjdISPqydioZ6OVtBUb0mXA44G9MTCdtyNv+4WANJcnMAAJGXtlgb2KE+gZlRQDjz03afp/DDzy3IST///2W19/JZCL//24o2AneriC+4ACyJIkC0FXyngpZWcpo91GHe5FP7qovdTlGtVN/ah6+nrh7vUNRXWplm6kpqqqumCue6qLakZqwflQX01d7qXu8OmJNvGlrfxqra2stJXWfjWbn4V+aaiAldm71trmZptrJkrgv9ryZ0km2rtm7ku7v7PypQGB4Hx3+uXdHUe+jta8DW/DaSthrLIEgsCy6R1amhOoM5reMerXFyNWvFfiCwKjDsogACQZkBySRRkT9qK/lIzb675Jz00ZmPXcqscmXfDYU0sm3TcvA//TEAA=) format("woff2");font-weight:400;font-display:block}
+text{white-space:pre;font-kerning:none;font-variant-ligatures:none;font-synthesis:none}
+.px{font-family:pixel,mono,monospace;font-weight:400}
+.mono{font-family:mono,glyphs,monospace}
+.glyphs{font-family:glyphs,mono,monospace}
+</style>
+<path d="M0 0h104v113h-104z" fill="#000"/>
+<g shape-rendering="crispEdges"><path fill="#0e0e0e" d="M22 9h60v60h-60z"/><path fill="#3a3a3a" d="M22 66h60v3h-60zM79 9h3v60h-3z"/><path fill="#000" d="M22 9h60v3h-60zM22 9h3v60h-3z"/></g><g transform="translate(28 15) scale(4)" shape-rendering="crispEdges"><path fill="#3b6fd8" d="M2 2h2v2h-2zM2 5h2v5h-2zM5 5h5v1h-5zM5 6h2v4h-2zM9 6h2v4h-2z"/></g><text class="px" x="19" y="102" font-size="16" fill="#292929">linkedin</text><text class="px" x="17" y="100" font-size="16" fill="#a3a3a3">linkedin</text>
+</svg>

@@ -34,8 +34,24 @@ export function advance(ch) {
   return 6;
 }
 
-// the line's advance in px, trailing unit included (what css max-content gives)
-export const measure = (text, size = 16) => ([...String(text)].reduce((s, c) => s + advance(c), 0) * size) / 8;
+// the face's j hooks three units left of where it starts, kerned under the letter before.
+// after a space that hook reads as a comma ("with,jobee") and at the start of a line it
+// pokes past the edge, so pxText gives it room: two units after a space, three at the
+// start. jRoom is that room in units, which measure counts
+const J_SPACE = 2;
+const J_LEAD = 3;
+const jRoom = (text) => (text.startsWith("j") ? J_LEAD : 0) + (text.match(/ j/g)?.length ?? 0) * J_SPACE;
+
+// the text as <text> content: escaped, every " j" nudged right by its room (a dx on the
+// j carries the rest of the line along with it). the leading room is the caller's x
+export const jNudge = (size = 16) => (J_SPACE * size) / 8;
+export const pxMarkup = (text, size = 16) => esc(text).replace(/ j/g, ` <tspan dx="${jNudge(size)}">j</tspan>`);
+export const pxLead = (text, size = 16) => (String(text).startsWith("j") ? (J_LEAD * size) / 8 : 0);
+
+// the line's advance in px, trailing unit included (what css max-content gives), and
+// the j's room
+export const measure = (text, size = 16) =>
+  (([...String(text)].reduce((s, c) => s + advance(c), 0) + jRoom(String(text))) * size) / 8;
 
 // the ink: the advance less the trailing unit, what to centre on
 export const inkWidth = (text, size = 16) => (String(text).length ? measure(text, size) - size / 8 : 0);
@@ -66,8 +82,9 @@ export function pxText(text, { x = 0, y = 0, size = 16, color = INK.paper, shado
   const x0 = Math.round(align === "center" ? x - w / 2 : align === "right" ? x - w : x);
   const base = y + size;
   const c = cls ? `px ${cls}` : "px";
+  const lead = pxLead(text, size);
   const t = (dx, dy, fill) =>
-    `<text class="${c}" x="${x0 + dx}" y="${base + dy}" font-size="${size}" fill="${fill}">${esc(text)}</text>`;
+    `<text class="${c}" x="${x0 + lead + dx}" y="${base + dy}" font-size="${size}" fill="${fill}">${pxMarkup(text, size)}</text>`;
   let svg = "";
   if (outline) for (const [dx, dy] of [[u, 0], [-u, 0], [0, u], [0, -u]]) svg += t(dx, dy, outline === true ? "#000" : outline);
   else if (shadow) svg += t(u, u, shadow === true ? shadowOf(color) : shadow);

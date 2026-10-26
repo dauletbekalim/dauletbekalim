@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="99.96" viewBox="0 0 104 113" role="img" aria-label="agentmash">
+<title>agentmash</title>
+<style>
+@font-face{font-family:pixel;src:url(data:font/woff2;base64,d09GMgABAAAAAAHUAAsAAAAABGQAAAGIAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAXBEICoNIgmQBNgIkAyYLFgAEIAVAByAbJwMALg54E+tkiLM6YQIIpdbws1XEQ99a9qt6Qt0zGxqdt0rkCIRHSeAv9gDAawC0vN28+qGLWWgffphnBpugB4TBbaDU6AA1adIXwH8aDIJO3dTGtAXymYU8xvAAUw1oDbDoz8MwkYACT91FdKXr9nVUN7YuH8dNM4Y8oFse6Zva5UWUF34hIM+W42AKSBSMSGDk7QUT89KsKaGybv8PB5Jmvfn/5T/79MN3hXJ1/C9ABSMYcB73AB0gZHdD4KxMum4yP1/n61K3tC8GLfsYolejYW4fPqs36KOWFoN9OZQ+hq6KhYha5lo2Neu+aFrWMtM0NVjqsDtAu49jcOi88g5wKBqpZlM3a5z7rGyKWbzwyCk2V96uqe2lSktSYVP9n9M4Z6d9tpqHJ7lfatFd7uJMT8w7Uyj6LoBA8OvGlYcW17/Ot/ICnseBHZL/l/2jIkHwQzrnO2zk2Ty2Xsh37LfFFxCoRg4EgFQAaQ2JbkEYwf+lNDESpmiCobiUiVRyGDER8D8bFgAA) format("woff2");font-weight:400;font-display:block}
+text{white-space:pre;font-kerning:none;font-variant-ligatures:none;font-synthesis:none}
+.px{font-family:pixel,mono,monospace;font-weight:400}
+.mono{font-family:mono,glyphs,monospace}
+.glyphs{font-family:glyphs,mono,monospace}
+</style>
+<path d="M0 0h104v113h-104z" fill="#000"/>
+<g shape-rendering="crispEdges"><path fill="#0e0e0e" d="M22 9h60v60h-60z"/><path fill="#3a3a3a" d="M22 66h60v3h-60zM79 9h3v60h-3z"/><path fill="#000" d="M22 9h60v3h-60zM22 9h3v60h-3z"/></g><g transform="translate(28 15) scale(4)" shape-rendering="crispEdges"><path fill="#a4f4f8" d="M3 1h6v1h-6zM9 2h1v1h-1zM10 3h1v6h-1z"/><path fill="#2aa8b0" d="M2 2h1v1h-1zM9 9h1v1h-1z"/><path fill="#5decf5" d="M3 2h6v1h-6zM9 3h1v6h-1z"/><path fill="#9c7f4e" d="M8 3h1v1h-1zM7 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1zM3 8h1v1h-1zM2 9h1v1h-1zM1 10h1v1h-1z"/></g><text class="px" x="3" y="102" font-size="16" fill="#292929">agentmash</text><text class="px" x="1" y="100" font-size="16" fill="#a3a3a3">agentmash</text>
+</svg>

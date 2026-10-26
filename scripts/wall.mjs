@@ -1,21 +1,27 @@
 // the commits wall: my github year as a wall of blocks, like alim.wtf's (Commits.tsx,
 // CommitsGrid.tsx), drawn as an svg for the readme. the scoreboard up top, then the year
-// in two stacked halves, the older on top, months over each: 25px blocks on desktop, so
-// a phone (830 squeezed to 340) still gets the site's 10px ones. the blocks go down a
-// column at a time on load, a white outline running ahead of them (reduced motion:
-// built). .github/workflows/wall.yml runs this every 6 hours and pushes dist/ to the
-// profile-assets branch.
+// from its first week with anything in it (the empty weeks before only push the blocks
+// off the wall), months over it. the blocks are as big as the width lets them be; once
+// the weeks don't fit one strip, the year goes into stacked strips, the older on top.
+// the blocks go down a column at a time on load, a white outline running ahead of them
+// (reduced motion: built). .github/workflows/wall.yml runs this every 6 hours and pushes
+// dist/ to the profile-assets branch.
 //
-//   dist/wall.svg          the wall
-//   dist/wall-offline.svg  the frame with an unbuilt wall, for a readme with no good one yet
+// two cuts, like the header: the wide one for the readme column (820, 24px words) and a
+// phone one (410, 16px words, the scoreboard over the chat) that the readme's <picture>
+// swaps in under 600px, so a ~300px phone column still gets ~12px words.
+//
+//   dist/wall.svg, dist/wall-phone.svg                  the wall
+//   dist/wall-offline.svg, dist/wall-offline-phone.svg  the frame with an unbuilt wall,
+//                                                       for a readme with no good one yet
 //
 //   node scripts/wall.mjs                 fetch github, write dist/
 //   node scripts/wall.mjs --html f.html   read a saved contributions page instead
 //   node scripts/wall.mjs --out dir       write somewhere else
 //
-// github not answering (or a page that no longer parses): wall-offline.svg is still
-// written, wall.svg is left alone and the exit code is 1, so the action keeps the last
-// good one.
+// github not answering (or a page that no longer parses): the offline frames are still
+// written, the walls are left alone and the exit code is 1, so the action keeps the last
+// good ones.
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -35,22 +41,15 @@ const opt = (name) => {
 };
 const OUT = opt("out") ?? join(ROOT, "dist");
 
-// 830 wide: the readme column, shown 1:1 on desktop. g: one gui pixel. T: every line of
-// text, ~10px when github squeezes 830 into a phone's 340
-const W = 830;
-const g = 3;
-const PAD = 24;
-const T = 24;
-const LH = T * 1.25;
-
-// the wall. a texel is TX, a block 5 texels (25px), GAP the air between blocks, BEVEL its
-// lit and shaded edge. HALVES: how many strips the year is cut into
-const TX = 5;
-const CELL = 5 * TX;
-const GAP = 4;
-const STEP = CELL + GAP;
-const BEVEL = g;
-const HALVES = 2;
+// the cuts. W: the width, shown 1:1 on desktop (wide) or squeezed into a phone's ~300px
+// column (phone). g: one gui pixel. T: every line of text. PAD: the black round it all.
+// TX: the texel sizes a block may use (a block is 5 texels square), the biggest that
+// fits wins. GAP: the air between blocks. stacked: the scoreboard over the chat and the
+// legend over the live stamp, instead of side by side
+const CUTS = {
+  wide: { file: "wall", W: 820, g: 3, T: 24, PAD: 20, TX: [5, 6], GAP: 4, stacked: false },
+  phone: { file: "wall-phone", W: 410, g: 2, T: 16, PAD: 12, TX: [3, 4], GAP: 2, stacked: true },
+};
 
 // the build: a column every STEP_S, the outline TRAIL columns ahead of the blocks
 const START_S = 0.4;
@@ -73,14 +72,19 @@ const fmt = (n) => n.toLocaleString("en-US");
 const use = (id, x, y) => `<use href="#${id}" x="${x}" y="${y}"/>`;
 
 // the blocks, once each in <defs> (b0 is air, the dim dot), and the builder's outline
-const DEFS =
-  `<defs>${[0, 1, 2, 3, 4].map((l) => `<g id="b${l}">${commitBlock(l, { tx: TX, bevel: BEVEL })}</g>`).join("")}` +
-  `<path id="gh" fill="${INK.paper}" fill-rule="evenodd" d="M0 0h${CELL}v${CELL}H0zM${g} ${g}v${CELL - 2 * g}h${CELL - 2 * g}V${g}z"/></defs>`;
+function defs({ g, tx }) {
+  const cell = 5 * tx;
+  return (
+    `<defs>${[0, 1, 2, 3, 4].map((l) => `<g id="b${l}">${commitBlock(l, { tx, bevel: g })}</g>`).join("")}` +
+    `<path id="gh" fill="${INK.paper}" fill-rule="evenodd" d="M0 0h${cell}v${cell}H0zM${g} ${g}v${cell - 2 * g}h${cell - 2 * g}V${g}z"/></defs>`
+  );
+}
 
 // the scoreboard: a translucent strip, the title row a step brighter and centred, names
 // grey on the left, scores in the game's scoreboard red on the right (Commits.module.css).
 // x is its right edge
-function scoreboard({ x, y, rows }) {
+function scoreboard({ x, y, rows }, { g, T }) {
+  const LH = T * 1.25;
   const pad = 4 * g;
   const inner = Math.max(measure(COPY.title, T), ...rows.map((r) => measure(r.name, T) + 8 * g + measure(r.score, T)));
   const w = Math.ceil(inner + 2 * pad);
@@ -100,53 +104,63 @@ function scoreboard({ x, y, rows }) {
 
 // a chat line, like the site's cover: <alim> in the pixel face, white like a player's
 // name in the game's chat, the message in the mono, on the chat's translucent strip
-const CHAT_H = T * 1.5;
-function chatLine(text, { x, y }) {
+function chatLine(text, { x, y }, { g, T }) {
+  const h = T * 1.5;
   const name = `<${COPY.who}>`;
   const tx = x + 2 * g + measure(name, T) + monoWidth(" ", T);
   const w = Math.ceil(tx - x + monoWidth(text, T) + 2 * g);
-  return (
-    `<path fill="#1c1c1c" fill-opacity=".86" d="M${x} ${y}h${w}v${CHAT_H}h${-w}z"/>` +
-    pxText(name, { x: x + 2 * g, y: y + (CHAT_H - LH) / 2 + g / 2, size: T }) +
-    monoText(text, { x: tx, y, size: T, color: INK.paper, lh: CHAT_H / T })
-  );
+  const svg =
+    `<path fill="#1c1c1c" fill-opacity=".86" d="M${x} ${y}h${w}v${h}h${-w}z"/>` +
+    pxText(name, { x: x + 2 * g, y: y + (h - T * 1.25) / 2 + g / 2, size: T }) +
+    monoText(text, { x: tx, y, size: T, color: INK.paper, lh: 1.5 });
+  return { svg, w, h };
 }
 
-// less [air] [1] [2] [3] [4] more, at 20px blocks
-const LEGEND_H = 20;
-function legend({ x, y }) {
-  const tx = 4;
-  const lh = LEGEND_H / T;
+// less [air] [1] [2] [3] [4] more, its blocks a little smaller than the text is tall
+function legend({ x, y }, { g, T, GAP }) {
+  const tx = Math.round(T / 6);
+  const size = 5 * tx;
+  const lh = size / T;
   let svg = monoText(COPY.legend[0], { x, y, size: T, color: INK.dim, lh }).svg;
   let cx = x + monoWidth(COPY.legend[0], T) + 3 * g;
   for (let l = 0; l <= 4; l++) {
-    svg += commitBlock(l, { x: cx, y, tx, bevel: 2 }).svg;
-    cx += 5 * tx + 4;
+    svg += commitBlock(l, { x: cx, y, tx, bevel: g - 1 }).svg;
+    cx += size + GAP;
   }
-  return svg + monoText(COPY.legend[1], { x: cx - 4 + 3 * g, y, size: T, color: INK.dim, lh }).svg;
+  cx += 3 * g - GAP;
+  svg += monoText(COPY.legend[1], { x: cx, y, size: T, color: INK.dim, lh }).svg;
+  return { svg, w: cx + monoWidth(COPY.legend[1], T) - x, h: size };
+}
+
+// the live stamp: a slow blinking dot, then when github served it. x is its right edge
+function stamp(text, { x, y }, { g, T }) {
+  const sx = x - monoWidth(text, T);
+  const svg =
+    `<rect class="live" x="${Math.round(sx - 5 * g)}" y="${y + 4 * g}" width="${2 * g}" height="${2 * g}" fill="${INK.paper}"/>` +
+    monoText(text, { x: sx, y, size: T, color: INK.dim, lh: 1.25 }).svg;
+  return { svg, w: monoWidth(text, T) + 5 * g, h: T * 1.25 };
 }
 
 // month labels for weeks [a, b), columns counted from a: every month that starts there,
 // the strip's own month at its first column when no other starts close by, and none
-// within MIN_COLS columns of the next (it would collide)
-const MIN_COLS = Math.ceil((monoWidth("mmm", T) + 2 * g) / STEP);
-function monthsIn(all, weeks, a, b) {
+// within minCols columns of the next (it would collide)
+function monthsIn(all, weeks, a, b, minCols) {
   const inside = all.filter((m) => m.col >= a && m.col < b).map((m) => ({ ...m, col: m.col - a }));
-  if (!inside.length || inside[0].col >= MIN_COLS) {
+  if (!inside.length || inside[0].col >= minCols) {
     const day = weeks[a].find((d) => d !== null);
     const label = new Date(`${day.date}T00:00:00Z`).toLocaleString("en-US", { month: "short", timeZone: "UTC" });
     inside.unshift({ col: 0, label: label.toLowerCase() });
   }
-  return inside.filter((m, i) => i === inside.length - 1 || inside[i + 1].col - m.col >= MIN_COLS);
+  return inside.filter((m, i) => i === inside.length - 1 || inside[i + 1].col - m.col >= minCols);
 }
 
 // one strip of the year: month labels, then 7 rows of blocks, column by column. each
 // column is three groups: its air and its outline go up as the builder reaches it, its
 // blocks TRAIL columns later. from: the strip's first week, for the timing
-function strip({ x, y, weeks, months, from }) {
+function strip({ x, y, weeks, months, from }, { g, T }, { step, gap }) {
   let svg = "";
-  for (const m of months) svg += monoText(m.label, { x: x + m.col * STEP, y, size: T, color: INK.dimmer, lh: 1.25 });
-  const top = y + LH + 2 * g;
+  for (const m of months) svg += monoText(m.label, { x: x + m.col * step, y, size: T, color: INK.dimmer, lh: 1.25 });
+  const top = y + T * 1.25 + 2 * g;
   const at = (n) => `${(START_S + n * STEP_S).toFixed(3)}s`;
   weeks.forEach((week, c) => {
     let air = "";
@@ -154,8 +168,8 @@ function strip({ x, y, weeks, months, from }) {
     let blocks = "";
     week.forEach((day, r) => {
       if (!day) return;
-      const bx = x + c * STEP;
-      const by = top + r * STEP;
+      const bx = x + c * step;
+      const by = top + r * step;
       if (day.level === 0) air += use("b0", bx, by);
       else {
         ghost += use("gh", bx, by);
@@ -166,7 +180,7 @@ function strip({ x, y, weeks, months, from }) {
     if (ghost) svg += `<g class="h" style="animation-delay:${at(from + c)}">${ghost}</g>`;
     if (blocks) svg += `<g class="b" style="animation-delay:${at(from + c + TRAIL)}">${blocks}</g>`;
   });
-  return { svg, h: top - y + 7 * STEP - GAP };
+  return { svg, h: top - y + 7 * step - gap };
 }
 
 // the outline stays hidden unless the build is playing
@@ -184,65 +198,103 @@ const MOTION = `.a,.b{animation:on ${FADE_S}s ease-out both}
 .live{animation:live 2.4s ease-in-out infinite}
 @keyframes live{0%,45%,100%{opacity:1}70%{opacity:.2}}`;
 
-// the year's columns cut into HALVES strips, each `per` columns, centred, all starting at
-// the same left edge so their columns line up
-const layout = (n) => {
-  const per = Math.ceil(n / HALVES);
-  const w = per * STEP - GAP;
-  return { per, x: Math.round((W - w) / 2), w };
-};
+// the year from its first week with a contribution (all of it when there's none). the
+// scoreboard still counts the whole year
+function fromFirst(data) {
+  const first = data.weeks.findIndex((w) => w.some((d) => d && d.level > 0));
+  if (first <= 0) return data;
+  const months = data.months.filter((m) => m.col >= first).map((m) => ({ ...m, col: m.col - first }));
+  return { ...data, weeks: data.weeks.slice(first), months };
+}
 
-function drawWall(data) {
+// n weeks into strips: as few as fit the width at the smallest texel, then the biggest
+// texel those strips still fit. every strip starts at the same left edge, so their
+// columns line up
+function layout(n, { W, PAD, TX, GAP }) {
+  const room = W - 2 * PAD;
+  const fits = (tx, cols) => cols * (5 * tx + GAP) - GAP <= room;
+  const [lo, hi] = TX;
+  let strips = 1;
+  while (!fits(lo, Math.ceil(n / strips))) strips += 1;
+  const per = Math.ceil(n / strips);
+  let tx = hi;
+  while (tx > lo && !fits(tx, per)) tx -= 1;
+  const step = 5 * tx + GAP;
+  return { per, tx, step, gap: GAP, w: per * step - GAP };
+}
+
+function drawWall(all, cut) {
+  const { W, g, T, PAD, stacked } = cut;
+  const data = fromFirst(all);
   const n = data.weeks.length;
-  const { per, x, w } = layout(n);
-  const right = x + w;
+  const L = layout(n, cut);
+  const LH = T * 1.25;
   const rows = [
     { name: COPY.total, score: fmt(data.total) },
     data.streak > 0 ? { name: COPY.streak, score: fmt(data.streak) } : null,
     data.best ? { name: COPY.best(shortDay(data.best.date)), score: fmt(data.best.count) } : null,
   ].filter(Boolean);
+  const stampText = COPY.updated(shortDay(data.fetchedAt));
+
+  // measure first: the header and the foot can want more room than the wall
+  const board0 = scoreboard({ x: 0, y: 0, rows }, cut);
+  const chatW = Math.max(...COPY.chat.map((line) => chatLine(line, { x: 0, y: 0 }, cut).w));
+  const legend0 = legend({ x: 0, y: 0 }, cut);
+  const stamp0 = stamp(stampText, { x: 0, y: 0 }, cut);
+  const need = stacked
+    ? Math.max(board0.w, chatW, legend0.w, stamp0.w)
+    : Math.max(chatW + 8 * g + board0.w, legend0.w + 8 * g + stamp0.w);
+  const cw = Math.min(W - 2 * PAD, Math.max(L.w, need));
+  const left = Math.round((W - cw) / 2);
+  const right = left + cw;
+  const x = left + Math.round((cw - L.w) / 2);
 
   // the header, like the game's screen: the scoreboard on the right, alim's chat bottom
-  // left, level with the board's foot
-  const board = scoreboard({ x: right, y: PAD, rows });
-  const headH = Math.max(board.h, COPY.chat.length * CHAT_H);
-  let body = DEFS + board.svg;
-  const chatY = PAD + headH - COPY.chat.length * CHAT_H;
-  COPY.chat.forEach((line, i) => (body += chatLine(line, { x, y: chatY + i * CHAT_H })));
-  let y = PAD + headH + 10 * g;
+  // left, level with the board's foot (stacked: the chat under the board)
+  const board = scoreboard({ x: right, y: PAD, rows }, cut);
+  let body = defs({ g, tx: L.tx }) + board.svg;
+  const lineH = T * 1.5;
+  const chatH = COPY.chat.length * lineH;
+  const chatY = stacked ? PAD + board.h + 4 * g : PAD + Math.max(board.h, chatH) - chatH;
+  COPY.chat.forEach((line, i) => (body += chatLine(line, { x: left, y: chatY + i * lineH }, cut).svg));
+  let y = chatY + chatH + (stacked ? 6 : 10) * g;
 
-  for (let a = 0; a < n; a += per) {
-    const b = Math.min(n, a + per);
-    const s = strip({ x, y, weeks: data.weeks.slice(a, b), months: monthsIn(data.months, data.weeks, a, b), from: a });
+  const minCols = Math.ceil((monoWidth("mmm", T) + 2 * g) / L.step);
+  for (let a = 0; a < n; a += L.per) {
+    const b = Math.min(n, a + L.per);
+    const s = strip({ x, y, weeks: data.weeks.slice(a, b), months: monthsIn(data.months, data.weeks, a, b, minCols), from: a }, cut, L);
     body += s.svg;
     y += s.h + 8 * g;
   }
 
-  // the foot: the legend on the left, under the wall like the site's. the live stamp on
-  // the right: a slow blinking dot, then when github served it
-  body += legend({ x, y: y + (LH - LEGEND_H) / 2 });
-  const stamp = COPY.updated(shortDay(data.fetchedAt));
-  const sx = right - monoWidth(stamp, T);
-  body += `<rect class="live" x="${Math.round(sx - 5 * g)}" y="${y + 4 * g}" width="${2 * g}" height="${2 * g}" fill="${INK.paper}"/>`;
-  body += monoText(stamp, { x: sx, y, size: T, color: INK.dim, lh: 1.25 }).svg;
+  // the foot: the legend on the left, under the wall like the site's, the live stamp on
+  // the right (stacked: under the legend)
+  body += legend({ x: left, y: y + Math.round((LH - legend0.h) / 2) }, cut).svg;
+  if (stacked) y += LH + 2 * g;
+  body += stamp(stampText, { x: right, y }, cut).svg;
   const h = y + LH + PAD;
 
   const title = `${fmt(data.total)} contributions on github in the last year, drawn as a wall of blocks`;
   return svgDoc({ w: W, h, body, css: CSS, motion: MOTION, corners: g, title });
 }
 
-// the frame with nothing built: the scoreboard's title, why, and half a year of air
-function drawOffline() {
-  const { per, x, w } = layout(53);
-  const board = scoreboard({ x: x + w, y: PAD, rows: [] });
-  let body = DEFS + board.svg;
-  COPY.offline.forEach((line, i) => (body += monoText(line, { x, y: PAD + i * LH, size: T, color: INK.dim, lh: 1.25 })));
-  const top = PAD + Math.max(board.h, COPY.offline.length * LH) + 10 * g;
-  for (let c = 0; c < per; c++) for (let r = 0; r < 7; r++) body += use("b0", x + c * STEP, top + r * STEP);
-  return svgDoc({ w: W, h: top + 7 * STEP - GAP + PAD, body, corners: g, title: "github's contributions didn't load this time" });
+// the frame with nothing built: the scoreboard's title, why, and a strip of air as wide
+// as the frame takes at the smallest block
+function drawOffline(cut) {
+  const { W, g, T, PAD, TX, GAP, stacked } = cut;
+  const LH = T * 1.25;
+  const L = layout(Math.floor((W - 2 * PAD + GAP) / (5 * TX[0] + GAP)), cut);
+  const x = Math.round((W - L.w) / 2);
+  const board = scoreboard({ x: x + L.w, y: PAD, rows: [] }, cut);
+  let body = defs({ g, tx: L.tx }) + board.svg;
+  const textY = stacked ? PAD + board.h + 4 * g : PAD;
+  COPY.offline.forEach((line, i) => (body += monoText(line, { x: PAD, y: textY + i * LH, size: T, color: INK.dim, lh: 1.25 })));
+  const top = stacked ? textY + COPY.offline.length * LH + 6 * g : PAD + Math.max(board.h, COPY.offline.length * LH) + 10 * g;
+  for (let c = 0; c < L.per; c++) for (let r = 0; r < 7; r++) body += use("b0", x + c * L.step, top + r * L.step);
+  return svgDoc({ w: W, h: top + 7 * L.step - L.gap + PAD, body, corners: g, title: "github's contributions didn't load this time" });
 }
 
-writeSvg(join(OUT, "wall-offline.svg"), drawOffline());
+for (const cut of Object.values(CUTS)) writeSvg(join(OUT, `${cut.file.replace("wall", "wall-offline")}.svg`), drawOffline(cut));
 
 let data;
 try {
@@ -254,5 +306,6 @@ try {
   console.error(`wall: github offline (${err instanceof Error ? err.message : err}), keeping the last wall`);
   process.exit(1);
 }
-writeSvg(join(OUT, "wall.svg"), drawWall(data));
-console.log(`wall: ${fmt(data.total)} contributions, ${data.weeks.length} weeks, streak ${data.streak}, best ${data.best?.date} (${data.best?.count})`);
+for (const cut of Object.values(CUTS)) writeSvg(join(OUT, `${cut.file}.svg`), drawWall(data, cut));
+const shown = fromFirst(data).weeks.length;
+console.log(`wall: ${fmt(data.total)} contributions, ${shown} of ${data.weeks.length} weeks, streak ${data.streak}, best ${data.best?.date} (${data.best?.count})`);

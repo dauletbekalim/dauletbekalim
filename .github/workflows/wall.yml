@@ -1,6 +1,7 @@
 # the commits wall (scripts/wall.mjs): my github year as a wall of blocks, redrawn every
 # 6 hours and pushed to the profile-assets branch, where the readme reads it from:
 #   https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/profile-assets/wall.svg
+#   (and wall-phone.svg next to it, the cut a phone gets)
 # our own action: checkout, setup-node, then plain shell and the default GITHUB_TOKEN.
 # it never touches the `output` branch (the old snake's, retired with this readme) and
 # never force-pushes.

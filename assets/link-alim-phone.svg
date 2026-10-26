@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="99.96" viewBox="0 0 104 113" role="img" aria-label="alim.wtf">
+<title>alim.wtf</title>
+<style>
+@font-face{font-family:pixel;src:url(data:font/woff2;base64,d09GMgABAAAAAAHMAAsAAAAABBgAAAGCAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAbBEICoJsgiABNgIkAygLFgAEIAVAByAb9QIgLgbsNuUCVW4cjVjSBVINm7K/xcO/Y6/3vaSUlMD1fKGqKjcWjoiUmVNTGogJYdeCACEp6egB8UfBxtgZV1wSFcB/GoBuT93U5rTwL6NQ/7+l0aQCDYt1TOHEs4AT3M7No0MkAkFk9qxtNR8EJjkDuf63PTRws7yI8sIvBOTlchYDkCiYVwTmVbswa1qRBlYcdsJp511z839i5twZ/7/4/tYYtIP4X4AG5tFxAlcBFRBSCikEYna81jraRqcn696Y0HM8JmJcix4TcVDXspUA3sgQwLZe20ita9GGOltkOxmEw8RBXBM6VC2HevYUlF7HYyy6e58dWgMhMCo/33pelULPlHfWvVZ09j6gylz+ZdBW+4eNPPcuIfgMHvV+w0VTbA8IBEuPVh+cWvN1tJcX8Dz2b7bBIhcVCYJlH813uJ+XBVW0fAebl/GLuBnF8cVu5xcCzawEASAVrC8roo4J8+CS0qR5h51z2nkDl5x2y3HnbHHcSdedc9gVBfj/QQ==) format("woff2");font-weight:400;font-display:block}
+text{white-space:pre;font-kerning:none;font-variant-ligatures:none;font-synthesis:none}
+.px{font-family:pixel,mono,monospace;font-weight:400}
+.mono{font-family:mono,glyphs,monospace}
+.glyphs{font-family:glyphs,mono,monospace}
+</style>
+<path d="M0 0h104v113h-104z" fill="#000"/>
+<g shape-rendering="crispEdges"><path fill="#fff" d="M16 3h72v72h-72z"/><path fill="#000" d="M19 6h66v66h-66z"/><path fill="#0e0e0e" d="M22 9h60v60h-60z"/><path fill="#3a3a3a" d="M22 66h60v3h-60zM79 9h3v60h-3z"/><path fill="#000" d="M22 9h60v3h-60zM22 9h3v60h-3z"/></g><g transform="translate(28 15) scale(4)" shape-rendering="crispEdges"><path fill="#6b5233" d="M0 3h1v6h-1zM0 9h2v1h-2zM10 9h2v1h-2z"/><path fill="#f0f0f0" d="M2 5h2v2h-2z"/><path fill="#c8322a" d="M4 6h8v1h-8z"/><path fill="#8a1e19" d="M1 7h11v1h-11z"/><path fill="#9c7f4e" d="M1 8h11v1h-11z"/></g><text class="px" x="21" y="102" font-size="16" fill="#404040">alim.wtf</text><text class="px" x="19" y="100" font-size="16" fill="#fff">alim.wtf</text>
+</svg>

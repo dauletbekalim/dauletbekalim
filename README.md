@@ -1,29 +1,31 @@
 <p align="center">
-  <a href="https://alim.wtf"><picture><source media="(max-width: 600px)" srcset="assets/header-phone.svg"><img src="assets/header.svg" width="830" alt="alim dauletbek, drawn in ascii on a black title screen: co-founder &amp; ceo @ agentmash. delusional self-believer!"></picture></a>
+  <a href="https://alim.wtf"><picture><source media="(max-width: 600px)" srcset="assets/header-phone.svg"><img src="assets/header.svg" width="820" alt="alim dauletbek, drawn in ascii on a black title screen: co-founder &amp; ceo @ agentmash. delusional self-believer!"></picture></a>
 </p>
 
-<p align="center"><a href="https://alim.wtf"><img src="assets/link-alim.svg" align="top" width="104" alt="alim.wtf"></a><a href="https://agentmash.dev"><img src="assets/link-agentmash.svg" align="top" width="104" alt="agentmash.dev"></a><a href="https://x.com/alimwtf"><img src="assets/link-x.svg" align="top" width="104" alt="x: @alimwtf"></a><a href="https://t.me/alimwtf"><img src="assets/link-telegram.svg" align="top" width="104" alt="telegram: @alimwtf"></a><a href="https://www.linkedin.com/in/alim-dauletbek/"><img src="assets/link-linkedin.svg" align="top" width="104" alt="linkedin: alim-dauletbek"></a><a href="https://instagram.com/alim.wtf"><img src="assets/link-instagram.svg" align="top" width="104" alt="instagram: alim.wtf"></a></p>
+<p align="center"><a href="https://alim.wtf"><picture><source media="(max-width: 600px)" srcset="assets/link-alim-phone.svg"><img src="assets/link-alim.svg" align="top" alt="alim.wtf"></picture></a><a href="https://agentmash.dev"><picture><source media="(max-width: 600px)" srcset="assets/link-agentmash-phone.svg"><img src="assets/link-agentmash.svg" align="top" alt="agentmash.dev"></picture></a><a href="https://x.com/alimwtf"><picture><source media="(max-width: 600px)" srcset="assets/link-x-phone.svg"><img src="assets/link-x.svg" align="top" alt="x: @alimwtf"></picture></a><a href="https://t.me/alimwtf"><picture><source media="(max-width: 600px)" srcset="assets/link-telegram-phone.svg"><img src="assets/link-telegram.svg" align="top" alt="telegram: @alimwtf"></picture></a><a href="https://www.linkedin.com/in/alim-dauletbek/"><picture><source media="(max-width: 600px)" srcset="assets/link-linkedin-phone.svg"><img src="assets/link-linkedin.svg" align="top" alt="linkedin: alim-dauletbek"></picture></a><a href="https://instagram.com/alim.wtf"><picture><source media="(max-width: 600px)" srcset="assets/link-instagram-phone.svg"><img src="assets/link-instagram.svg" align="top" alt="instagram: alim.wtf"></picture></a></p>
 
 <p align="center">
-i’m alim, 18, from astana. co-founder &amp; ceo @ <a href="https://agentmash.dev">agentmash</a>.<br>
-full-time on agentmash, part-time working 2 swe jobs and running an auditing studio.<br>
+i’m alim, 18, from astana.<br>
+full-time on <a href="https://agentmash.dev">agentmash</a>, part-time working 2 swe jobs and running an auditing studio.<br>
 the youngest swe astana hub has ever had. still a delusional self-believer.
 </p>
 
 ### now.
 
-<p align="center"><a href="https://agentmash.dev"><img src="assets/agentmash.svg" width="830" alt="agentmash, crafted from your team and its AI coding agents: one app for your team’s AI coding agents. status: closed beta. works with claude code, codex, cursor, github copilot, gemini and more. pricing: free for two developers, $20 per developer a month for a team, agents never counted."></a></p>
+<p align="center"><a href="https://agentmash.dev"><picture><source media="(max-width: 600px)" srcset="assets/agentmash-phone.svg"><img src="assets/agentmash.svg" width="820" alt="agentmash, crafted from your team and its AI coding agents: one app for your team’s AI coding agents. status: closed beta. works with claude code, codex, cursor, github copilot, gemini and more. pricing: free for two developers, $20 per developer a month for a team, agents never counted."></picture></a></p>
 
+<p align="center">
 every agent is told which files a teammate’s agent is changing, before it edits them.<br>
-closed beta, <a href="https://agentmash.dev">request early access ↗</a>
+<a href="https://agentmash.dev">request early access ↗</a>
+</p>
 
 ### advancements.
 
-<p align="center"><img src="assets/advancements-1.svg" align="top" width="410" alt="IOAI 2025: kazakhstan national team. INFOMATRIX-ASIA 2025: 2nd place in hardware control. WRO 2025 national stage: 3rd place. NIS science projects contest: 1st place in engineering. a registered scientific patent: a localization model on bezier curves for a rover with no GPS."><img src="assets/advancements-2.svg" align="top" width="410" alt="harvard summer program: best overall solution, with jobee. jobee: $12K raised as cto. astana hub: the youngest swe it has ever had. auditing studio: projected $150K ARR, no ads. next stop: san francisco."></p>
+<p align="center"><img src="assets/advancements-1.svg" align="top" width="410" alt="IOAI 2025: kazakhstan national team. national olympiad in informatics: silver. INFOMATRIX-ASIA 2025: 2nd place in hardware control. WRO 2025 national stage: 3rd place. NIS science projects contest: 1st place in engineering. the first NIS AI olympiad: 3rd place."><img src="assets/advancements-2.svg" align="top" width="410" alt="a registered scientific patent: a localization model on bezier curves for a rover with no GPS. harvard summer program: best overall solution, with jobee. jobee: $12K raised as cto. astana hub: the youngest swe it has ever had. auditing studio: projected $150K ARR, no ads. next stop: san francisco."></p>
 
 ### inventory.
 
-<p align="center"><img src="assets/inventory.svg" width="830" alt="inventory: claude code, typescript, react / next, rust, python, ML (my own models), java (the rover) and postgres. level 18."></p>
+<p align="center"><picture><source media="(max-width: 600px)" srcset="assets/inventory-phone.svg"><img src="assets/inventory.svg" width="820" alt="inventory: claude code, typescript, react / next, rust, python, ML (my own models), java (the rover) and wav2vec2 (kazakh speech). level 18."></picture></p>
 
 ### quests.
 
@@ -31,7 +33,7 @@ closed beta, <a href="https://agentmash.dev">request early access ↗</a>
 
 ### commits, live.
 
-<p align="center"><img src="https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/profile-assets/wall.svg" width="830" alt="my github contributions for the last year as a wall of blocks: one block a day, the busier the day the richer the block, with the year's total, my day streak and my best day. redrawn every 6 hours."></p>
+<p align="center"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/profile-assets/wall-phone.svg"><img src="https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/profile-assets/wall.svg" width="820" alt="my github contributions for the last year as a wall of blocks, starting at my first one: one block a day, the busier the day the richer the block, with the year's total, my day streak and my best day. redrawn every 6 hours."></picture></p>
 
 ### press.
 

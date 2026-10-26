@@ -67,8 +67,10 @@ export const ART = {
     { y: MC.goldBlock, Y: SHADE.goldDark, o: MC.goldBlock, L: MC.log, l: SHADE.logDark, s: "#5fd3e6", S: "#00afca", d: "#00809a", D: "#006a80" },
   ),
 
-  // 1st place: the story's gold medal. 3rd: the same in bronze, on a red ribbon
+  // 1st place: the story's gold medal. silver: the same on a white ribbon. 3rd: in
+  // bronze, on a red ribbon
   gold: medal({ ribbon: MC.lapis, ribbonLit: SHADE.lapisLit, dark: SHADE.goldDark, mid: MC.goldBlock, lit: SHADE.goldLit }),
+  silver: medal({ ribbon: "#b8b8c4", ribbonLit: "#ffffff", dark: "#6e6e7a", mid: "#c4c4cf", lit: "#f4f4fa" }),
   bronze: medal({ ribbon: MC.redstone2, ribbonLit: "#e04040", dark: "#7a4519", mid: "#c0773a", lit: "#f0b27a" }),
 
   // best overall solution: a gold cup on a dark wood base
@@ -286,29 +288,6 @@ export const ART = {
       "................",
     ],
     { 4: "#8f8f8f", 5: "#6b6b6b", 6: "#d6d6d6", 7: "#ffffff", c: MC.dirt2 },
-  ),
-
-  // postgres: a database, a stack of discs
-  db: fromRows(
-    [
-      "................",
-      "....55555555....",
-      "..556666666655..",
-      ".56666666666665.",
-      ".45566666666554.",
-      ".44455555555444.",
-      ".44444444444444.",
-      ".34444444444443.",
-      ".33444444444433.",
-      ".43333333333334.",
-      ".44433333333444.",
-      ".44444444444444.",
-      ".34444444444443.",
-      "..334444444433..",
-      "....33333333....",
-      "................",
-    ],
-    { 3: "#25496b", 4: "#336791", 5: "#4f86b8", 6: "#7fb0dc" },
   ),
 };
 
