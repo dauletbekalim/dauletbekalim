@@ -62,7 +62,9 @@ export function inventory() {
     const art = drawSprite(item(it.item), { x: x + (SLOT - s.w * kk) / 2, y: y + (SLOT - s.h * kk) / 2, scale: kk });
     parts.push(`<g class="pop"${delay(0.2 + i * 0.12)}>${art}</g>`);
     const lx = x + SLOT + 4 * g;
-    parts.push(pxText(it.name, { x: lx, y: y - g, size: SIZE, color: INK.paper }));
+    // the pixel j hooks two units back, into the slot: give "java" them back
+    const hook = it.name.startsWith("j") ? 2 * (SIZE / 8) : 0;
+    parts.push(pxText(it.name, { x: lx + hook, y: y - g, size: SIZE, color: INK.paper }));
     parts.push(pxText(it.kind, { x: lx, y: y + 9 * g, size: SIZE, color: MC.gray }));
   });
 

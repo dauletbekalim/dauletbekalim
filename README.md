@@ -2,7 +2,7 @@
   <a href="https://alim.wtf"><img src="assets/header.svg" width="830" alt="alim dauletbek, drawn in ascii on a black title screen: co-founder &amp; ceo @ agentmash. delusional self-believer!"></a>
 </p>
 
-<p align="center"><a href="https://alim.wtf"><img src="assets/link-alim.svg" width="104" alt="alim.wtf"></a><a href="https://agentmash.dev"><img src="assets/link-agentmash.svg" width="104" alt="agentmash.dev"></a><a href="https://t.me/alimwtf"><img src="assets/link-telegram.svg" width="104" alt="telegram: @alimwtf"></a><a href="https://x.com/alimwtf"><img src="assets/link-x.svg" width="104" alt="x: @alimwtf"></a><a href="https://www.linkedin.com/in/alim-dauletbek/"><img src="assets/link-linkedin.svg" width="104" alt="linkedin: alim-dauletbek"></a><a href="https://instagram.com/alim.wtf"><img src="assets/link-instagram.svg" width="104" alt="instagram: alim.wtf"></a></p>
+<p align="center"><a href="https://alim.wtf"><img src="assets/link-alim.svg" align="top" width="104" alt="alim.wtf"></a><a href="https://agentmash.dev"><img src="assets/link-agentmash.svg" align="top" width="104" alt="agentmash.dev"></a><a href="https://x.com/alimwtf"><img src="assets/link-x.svg" align="top" width="104" alt="x: @alimwtf"></a><a href="https://t.me/alimwtf"><img src="assets/link-telegram.svg" align="top" width="104" alt="telegram: @alimwtf"></a><a href="https://www.linkedin.com/in/alim-dauletbek/"><img src="assets/link-linkedin.svg" align="top" width="104" alt="linkedin: alim-dauletbek"></a><a href="https://instagram.com/alim.wtf"><img src="assets/link-instagram.svg" align="top" width="104" alt="instagram: alim.wtf"></a></p>
 
 <p align="center">
 i’m alim, 18, from astana. co-founder &amp; ceo @ <a href="https://agentmash.dev">agentmash</a>.<br>
@@ -19,7 +19,7 @@ closed beta, <a href="https://agentmash.dev">request early access ↗</a>
 
 ### advancements.
 
-<p align="center"><img src="assets/advancements-1.svg" width="410" alt="IOAI 2025: kazakhstan national team. INFOMATRIX-ASIA 2025: 2nd place in hardware control. WRO 2025 national stage: 3rd place. NIS science projects contest: 1st place in engineering. a registered scientific patent: a localization model on bezier curves for a rover with no GPS."><img src="assets/advancements-2.svg" width="410" alt="harvard summer program: best overall solution, with jobee. jobee: $12K raised as cto. astana hub: the youngest swe it has ever had. auditing studio: projected $150K ARR, no ads. next stop: san francisco."></p>
+<p align="center"><img src="assets/advancements-1.svg" align="top" width="410" alt="IOAI 2025: kazakhstan national team. INFOMATRIX-ASIA 2025: 2nd place in hardware control. WRO 2025 national stage: 3rd place. NIS science projects contest: 1st place in engineering. a registered scientific patent: a localization model on bezier curves for a rover with no GPS."><img src="assets/advancements-2.svg" align="top" width="410" alt="harvard summer program: best overall solution, with jobee. jobee: $12K raised as cto. astana hub: the youngest swe it has ever had. auditing studio: projected $150K ARR, no ads. next stop: san francisco."></p>
 
 ### inventory.
 
@@ -27,7 +27,7 @@ closed beta, <a href="https://agentmash.dev">request early access ↗</a>
 
 ### quests.
 
-<p align="center"><a href="https://github.com/dauletbekalim/motion-ui-videos"><img src="assets/quest-motion-ui-videos.svg" width="410" alt="motion-ui-videos: a claude code skill that makes product videos from your app’s repo. javascript."></a><a href="https://github.com/dauletbekalim/A.C.T.I.V.E.-Rover-code"><img src="assets/quest-active-rover.svg" width="410" alt="A.C.T.I.V.E.-Rover-code: the rover’s pose estimation and control, our INFOMATRIX-ASIA project. java."></a><a href="https://github.com/dauletbekalim/narkesken"><img src="assets/quest-narkesken.svg" width="410" alt="narkesken: kazakh speech recognition, a fine-tuned wav2vec2. python."></a><a href="https://github.com/dauletbekalim/dauletbekalim"><img src="assets/quest-profile.svg" width="410" alt="dauletbekalim: this readme. every image on it is drawn by my own scripts. javascript."></a></p>
+<p align="center"><a href="https://github.com/dauletbekalim/motion-ui-videos"><img src="assets/quest-motion-ui-videos.svg" align="top" width="410" alt="motion-ui-videos: a claude code skill that makes product videos from your app’s repo. javascript."></a><a href="https://github.com/dauletbekalim/A.C.T.I.V.E.-Rover-code"><img src="assets/quest-active-rover.svg" align="top" width="410" alt="A.C.T.I.V.E.-Rover-code: the rover’s pose estimation and control, our INFOMATRIX-ASIA project. java."></a><a href="https://github.com/dauletbekalim/narkesken"><img src="assets/quest-narkesken.svg" align="top" width="410" alt="narkesken: kazakh speech recognition, a fine-tuned wav2vec2. python."></a><a href="https://github.com/dauletbekalim/dauletbekalim"><img src="assets/quest-profile.svg" align="top" width="410" alt="dauletbekalim: this readme. every image on it is drawn by my own scripts. javascript."></a></p>
 
 ### commits, live.
 

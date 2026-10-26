@@ -3,11 +3,12 @@
 // named. the pixel face has no é or cyrillic: "bezier", and the russian headline is drawn
 // by lib/pixel-cyrillic.mjs. change a fact here and on the site together.
 
+// the order keeps the long names apart: "x" sits between agentmash and telegram
 export const LINKS = [
   { file: "link-alim", label: "alim.wtf", href: "https://alim.wtf", item: "hud/bed" },
   { file: "link-agentmash", label: "agentmash", href: "https://agentmash.dev", item: "hud/pickaxe" },
-  { file: "link-telegram", label: "telegram", href: "https://t.me/alimwtf", item: "hud/plane" },
   { file: "link-x", label: "x", href: "https://x.com/alimwtf", item: "hud/x" },
+  { file: "link-telegram", label: "telegram", href: "https://t.me/alimwtf", item: "hud/plane" },
   { file: "link-linkedin", label: "linkedin", href: "https://www.linkedin.com/in/alim-dauletbek/", item: "hud/in" },
   { file: "link-instagram", label: "instagram", href: "https://instagram.com/alim.wtf", item: "hud/camera" },
 ];
