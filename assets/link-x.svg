@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="104" height="113" viewBox="0 0 104 113" role="img" aria-label="x">
+<title>x</title>
+<style>
+@font-face{font-family:pixel;src:url(data:font/woff2;base64,d09GMgABAAAAAAE8AAsAAAAAAqwAAADzAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAPBEIClx6ATYCJAMMCwgABCAFQAcgGwMCAJ4HtnuUIkz4/q1lXEgb4vmv/di5+1CLKqVoTCTST4UcmI4nksmq2yY7lmzMdpGHI8IFEYSHam0mzxp6DkI+Pz1uSW2BBYFoCyjSzCM9yHfRg30nP/Ahd/Q4ZmSk9Gu0kXadjLIFcHKUb1PUPVPPvhFolxXYBDQUVlCwQhyCMSOi2RS9M9/Rb/sTAOldQIExFHbBHoARQLE6IpVpxVMBlGmPZLbpdUCuBvQiCMcrN/d5bxPT9QxPaRdku2QBSgPhL6W9YLjPEwCgFNG8srfsIgiApgDNOsrIpFiB/UvNnBXKTUuxTcG4ygyXUweBzqABAA==) format("woff2");font-weight:400;font-display:block}
+text{white-space:pre;font-kerning:none;font-variant-ligatures:none;font-synthesis:none}
+.px{font-family:pixel,mono,monospace;font-weight:400}
+.mono{font-family:mono,glyphs,monospace}
+.glyphs{font-family:glyphs,mono,monospace}
+</style>
+<path d="M0 0h104v113h-104z" fill="#000"/>
+<g shape-rendering="crispEdges"><path fill="#0e0e0e" d="M22 9h60v60h-60z"/><path fill="#3a3a3a" d="M22 66h60v3h-60zM79 9h3v60h-3z"/><path fill="#000" d="M22 9h60v3h-60zM22 9h3v60h-3z"/></g><g transform="translate(28 15) scale(4)" shape-rendering="crispEdges"><path fill="#ffffff" d="M2 2h2v1h-2zM8 2h2v1h-2zM3 3h2v1h-2zM7 3h2v1h-2zM4 4h4v1h-4zM5 5h2v2h-2zM4 7h4v1h-4zM3 8h2v1h-2zM7 8h2v1h-2zM2 9h2v1h-2zM8 9h2v1h-2z"/></g><text class="px" x="49" y="102" font-size="16" fill="#292929">x</text><text class="px" x="47" y="100" font-size="16" fill="#a3a3a3">x</text>
+</svg>

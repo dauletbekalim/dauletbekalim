@@ -1,119 +1,40 @@
-<div align="center">
+<p align="center">
+  <a href="https://alim.wtf"><img src="assets/header.svg" width="830" alt="alim dauletbek, drawn in ascii on a black title screen: co-founder &amp; ceo @ agentmash. delusional self-believer!"></a>
+</p>
 
-<!-- HEADER PHOTO -->
-<img src="assets/header.jpg?v=3" alt="Alim Dauletbek" width="100%" />
+<p align="center"><a href="https://alim.wtf"><img src="assets/link-alim.svg" width="104" alt="alim.wtf"></a><a href="https://agentmash.dev"><img src="assets/link-agentmash.svg" width="104" alt="agentmash.dev"></a><a href="https://t.me/alimwtf"><img src="assets/link-telegram.svg" width="104" alt="telegram: @alimwtf"></a><a href="https://x.com/alimwtf"><img src="assets/link-x.svg" width="104" alt="x: @alimwtf"></a><a href="https://www.linkedin.com/in/alim-dauletbek/"><img src="assets/link-linkedin.svg" width="104" alt="linkedin: alim-dauletbek"></a><a href="https://instagram.com/alim.wtf"><img src="assets/link-instagram.svg" width="104" alt="instagram: alim.wtf"></a></p>
 
-<h3>Alim Dauletbek</h3>
+<p align="center">
+i’m alim, 18, from astana. co-founder &amp; ceo @ <a href="https://agentmash.dev">agentmash</a>.<br>
+full-time on agentmash, part-time working 2 swe jobs and running an auditing studio.<br>
+the youngest swe astana hub has ever had. still a delusional self-believer.
+</p>
 
-Full-stack SWE @ Astana Hub · Founder @ agentmash.dev
+### now.
 
+<p align="center"><a href="https://agentmash.dev"><img src="assets/agentmash.svg" width="830" alt="agentmash, crafted from your team and its AI coding agents: one app for your team’s AI coding agents. status: closed beta. works with claude code, codex, cursor, github copilot, gemini and more. pricing: free for two developers, $20 per developer a month for a team, agents never counted."></a></p>
 
+every agent is told which files a teammate’s agent is changing, before it edits them.<br>
+closed beta, <a href="https://agentmash.dev">request early access ↗</a>
 
-<br/>
+### advancements.
 
-</div>
+<p align="center"><img src="assets/advancements-1.svg" width="410" alt="IOAI 2025: kazakhstan national team. INFOMATRIX-ASIA 2025: 2nd place in hardware control. WRO 2025 national stage: 3rd place. NIS science projects contest: 1st place in engineering. a registered scientific patent: a localization model on bezier curves for a rover with no GPS."><img src="assets/advancements-2.svg" width="410" alt="harvard summer program: best overall solution, with jobee. jobee: $12K raised as cto. astana hub: the youngest swe it has ever had. auditing studio: projected $150K ARR, no ads. next stop: san francisco."></p>
 
-<br/>
+### inventory.
 
-## About me
+<p align="center"><img src="assets/inventory.svg" width="830" alt="inventory: claude code, typescript, react / next, rust, python, ML (my own models), java (the rover) and postgres. level 18."></p>
 
-```ts
-const alim = {
-  dayJob:    "full-stack lead SWE @ Astana Hub (full-time)",
-  role:      "on the side, founder & lead engineer @ IT studio,
-  building:  "stealth startup in progress, multiplayer AI",
-  stack:     ["Next.js", "React", "TypeScript", "Three.js", "GSAP"],
-};
-```
+### quests.
 
-- I run **[Shhaizada](https://shhaizada.dev)**, an IT studio implementing AI in enterprise infrastructure, CRMs and bespoke web experiences.
-- portfolio and playground: **[alim.wtf](https://alim.wtf)**
+<p align="center"><a href="https://github.com/dauletbekalim/motion-ui-videos"><img src="assets/quest-motion-ui-videos.svg" width="410" alt="motion-ui-videos: a claude code skill that makes product videos from your app’s repo. javascript."></a><a href="https://github.com/dauletbekalim/A.C.T.I.V.E.-Rover-code"><img src="assets/quest-active-rover.svg" width="410" alt="A.C.T.I.V.E.-Rover-code: the rover’s pose estimation and control, our INFOMATRIX-ASIA project. java."></a><a href="https://github.com/dauletbekalim/narkesken"><img src="assets/quest-narkesken.svg" width="410" alt="narkesken: kazakh speech recognition, a fine-tuned wav2vec2. python."></a><a href="https://github.com/dauletbekalim/dauletbekalim"><img src="assets/quest-profile.svg" width="410" alt="dauletbekalim: this readme. every image on it is drawn by my own scripts. javascript."></a></p>
 
-<br/>
+### commits, live.
 
-## tech stack
+<p align="center"><img src="https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/profile-assets/wall.svg" width="830" alt="my github contributions for the last year as a wall of blocks: one block a day, the busier the day the richer the block, with the year's total, my day streak and my best day. redrawn every 6 hours."></p>
 
-<div align="center">
+### press.
 
-**Languages**
+<p align="center"><a href="https://digitalbusiness.kz/2026-10-23/paren-iz-astani-v-18-let-zarabativaet-millioni-tenge-v-mesyats-na-it/"><img src="assets/press.svg" width="410" alt="digital business, 23 oct 2026: «Парень из Астаны в 18 лет зарабатывает миллионы тенге в месяц на ИТ» (a guy from astana earns millions of tenge a month in IT, at 18). also on bitpress.kz and newtimes.kz. read the article."></a></p>
 
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-
-**Frameworks & libraries**
-
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white)
-![GSAP](https://img.shields.io/badge/GSAP-0AE448?style=for-the-badge&logo=greensock&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-
-**Tools & platforms**
-
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
-
-</div>
-
-<br/>
-
-## contribution graph
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/output/github-snake.svg" />
-  <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/output/github-snake.svg" width="100%" />
-</picture>
-
-</div>
-
-<br/>
-
-## let's connect
-
-<div align="center">
-
-<a href="https://alim.wtf">
-  <img src="https://img.shields.io/badge/Portfolio-alim.wtf-e8845b?style=for-the-badge&logo=safari&logoColor=white" alt="Portfolio" />
-</a>
-<a href="https://www.linkedin.com/in/alim-dauletbek/">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-</a>
-<a href="https://x.com/alimwtf">
-  <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" />
-</a>
-<a href="https://instagram.com/alim.wtf">
-  <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
-</a>
-<a href="https://t.me/alimwtf">
-  <img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" />
-</a>
-<a href="mailto:dauletbekalim13@gmail.com">
-  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-</a>
-
-</div>
-
-<br/>
-
-<div align="center">
-
-<img
-  src="https://capsule-render.vercel.app/api?type=waving&color=0:e8845b,100:0f1117&height=120&section=footer&text=ship%20it,%20then%20make%20it%20move&fontSize=18&fontColor=ffffff&fontAlignY=72"
-  alt="footer"
-  width="100%"
-/>
-
-</div>
+<p align="center"><sub>say hi on <a href="https://t.me/alimwtf">telegram</a> · drawn by me, with a few agents watching each other.</sub></p>

@@ -1,0 +1,81 @@
+# the commits wall (scripts/wall.mjs): my github year as a wall of blocks, redrawn every
+# 6 hours and pushed to the profile-assets branch, where the readme reads it from:
+#   https://raw.githubusercontent.com/dauletbekalim/dauletbekalim/profile-assets/wall.svg
+# our own action: checkout, setup-node, then plain shell and the default GITHUB_TOKEN.
+# it never touches the `output` branch (the old snake's, retired with this readme) and
+# never force-pushes.
+
+name: commits wall
+
+on:
+  schedule:
+    # off the hour: github's cron queue is busiest at :00
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+# one run at a time, so two pushes to profile-assets never race
+concurrency:
+  group: commits-wall
+  cancel-in-progress: false
+
+jobs:
+  wall:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # cuts the embedded fonts to the glyphs the svg sets (scripts/lib/subset.py). if
+      # this fails the whole fonts go in: a bigger svg, still a working one
+      - name: install fonttools
+        continue-on-error: true
+        env:
+          PIP_BREAK_SYSTEM_PACKAGES: "1"
+        run: python3 -m pip install --user --quiet fonttools brotli
+
+      # exits 1 when github doesn't answer: the job stops here and the last good wall
+      # stays up on profile-assets
+      - name: draw the wall
+        run: node scripts/wall.mjs
+
+      # dist/ onto profile-assets, in a worktree of its own: an orphan branch the first
+      # time (none of main's files or history), a commit only when an svg changed
+      - name: push to profile-assets
+        run: |
+          set -euo pipefail
+          branch=profile-assets
+          site="$RUNNER_TEMP/profile-assets"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads origin "$branch" > /dev/null; then
+            git fetch --quiet --depth=1 origin "$branch"
+            git worktree add --quiet --detach "$site" FETCH_HEAD
+          else
+            # 2 is "no such branch"; anything else (the network) stops the job
+            code=$?
+            [ "$code" -eq 2 ] || exit "$code"
+            git worktree add --quiet --detach "$site"
+            git -C "$site" checkout --quiet --orphan "$branch"
+            git -C "$site" rm -r -f --quiet .
+          fi
+
+          cp dist/*.svg "$site"/
+          git -C "$site" add -A
+          if git -C "$site" diff --cached --quiet; then
+            echo "the wall didn't change"
+            exit 0
+          fi
+          git -C "$site" commit --quiet -m "redraw the commits wall"
+          # pushed from the checkout itself, where actions/checkout left its credentials
+          git push --quiet origin "$(git -C "$site" rev-parse HEAD):refs/heads/$branch"

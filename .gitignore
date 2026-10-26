@@ -1,1 +1,4 @@
 .gstack/
+
+# the commits wall's output (scripts/wall.mjs); the action pushes it to profile-assets
+dist/
